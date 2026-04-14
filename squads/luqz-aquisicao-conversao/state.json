@@ -1,0 +1,21 @@
+{
+  "squad": "luqz-aquisicao-conversao",
+  "status": "completed",
+  "step": { "current": 8, "total": 8, "label": "step-08-revisao-final" },
+  "agents": [
+    { "id": "estela-estrategia", "name": "Estela Estratégia", "icon": "🧠", "status": "done", "desk": { "col": 1, "row": 1 } },
+    { "id": "marcio-midia", "name": "Márcio Mídia", "icon": "📋", "status": "done", "desk": { "col": 2, "row": 1 } },
+    { "id": "clara-copy", "name": "Clara Copy", "icon": "✍️", "status": "done", "desk": { "col": 3, "row": 1 } },
+    { "id": "rafael-roteiro", "name": "Rafael Roteiro", "icon": "🎬", "status": "done", "desk": { "col": 1, "row": 2 } },
+    { "id": "vera-veredicto", "name": "Vera Veredicto", "icon": "✅", "status": "done", "desk": { "col": 2, "row": 2 } }
+  ],
+  "handoff": {
+    "from": "vera-veredicto",
+    "to": null,
+    "message": "Pacote aprovado com 1 ressalva menor. Pronto para entrega ao cliente.",
+    "completedAt": "2026-04-14T03:18:00Z"
+  },
+  "startedAt": "2026-04-14T03:05:00Z",
+  "updatedAt": "2026-04-14T03:18:00Z",
+  "completedAt": "2026-04-14T03:18:00Z"
+}

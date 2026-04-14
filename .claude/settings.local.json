@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -s -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8\" \"http://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj\")"
+      "Bash(curl -s -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8\" \"http://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj\")",
+      "mcp__claude_ai_ClickUp__clickup_get_workspace_hierarchy",
+      "Bash(node -e ':*)",
+      "Bash(git config:*)"
     ]
   }
 }

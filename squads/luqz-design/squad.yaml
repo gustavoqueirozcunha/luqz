@@ -1,0 +1,59 @@
+squad:
+  code: luqz-design
+  name: LUQZ Design Squad
+  icon: 🎨
+  description: >
+    Squad de design da LUQZ Performance. Transforma briefs estratégicos
+    em artes estáticas de alto padrão visual, focadas em percepção premium
+    e conversão. Opera como diretor de arte autônomo.
+  version: "1.0"
+  created: "2026-04-13"
+
+pipeline:
+  steps:
+    - id: load-context
+      agent: designer
+      action: >
+        Carregar contexto completo do cliente:
+        /clientes/[cliente]/contexto/ (diretrizes, oferta, persona, tom-de-voz, cliente)
+        /clientes/[cliente]/design/ (direcao-visual, sistema-visual, referencias)
+      checkpoint: false
+
+    - id: load-brief
+      agent: designer
+      action: >
+        Carregar o briefing da semana:
+        /clientes/[cliente]/M1/Roteiros_Semana[X].md
+        Identificar todos os conteúdos que precisam de arte (carrosséis e covers de reels).
+      checkpoint: false
+
+    - id: reference-scan
+      agent: designer
+      action: >
+        Buscar mentalmente referências visuais reais de alto nível.
+        Identificar padrões visuais dessas referências.
+        Adaptar ao contexto do brief. Criar algo original.
+      checkpoint: false
+
+    - id: create-art-direction
+      agent: designer
+      action: >
+        Para cada conteúdo, entregar:
+        1. Conceito (1 linha)
+        2. Referência criativa (estilo + inspiração)
+        3. Direção visual (cores, tipografia, estilo)
+        4. Estrutura da arte (headline, subheadline, elementos, organização)
+        5. Layout descritivo (pronto pra Canva)
+        6. Variações (2)
+      checkpoint: true
+
+    - id: generate-assets
+      agent: designer
+      action: >
+        Gerar as imagens finais das artes usando ferramenta de geração
+        de imagem, seguindo rigorosamente a direção visual aprovada.
+      checkpoint: true
+
+agents:
+  - id: designer
+    file: agents/designer.agent.md

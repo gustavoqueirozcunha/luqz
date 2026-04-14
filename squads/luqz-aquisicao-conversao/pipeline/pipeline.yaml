@@ -1,0 +1,60 @@
+pipeline:
+  name: Pipeline de Produção LUQZ
+  description: Do briefing do cliente ao pacote de ativos revisado e pronto para entrega.
+  version: "1.0"
+
+  steps:
+    - id: step-01-briefing-cliente
+      name: Briefing do Cliente
+      type: checkpoint
+      file: steps/step-01-briefing-cliente.md
+
+    - id: step-02-estrategia-performance
+      name: Estratégia de Performance
+      type: agent
+      agent: estela-estrategia
+      execution: inline
+      file: steps/step-02-estrategia-performance.md
+
+    - id: step-03-aprovacao-estrategia
+      name: Aprovação da Estratégia
+      type: checkpoint
+      file: steps/step-03-aprovacao-estrategia.md
+
+    - id: step-04-plano-midia
+      name: Plano de Mídia
+      type: agent
+      agent: marcio-midia
+      execution: inline
+      file: steps/step-04-plano-midia.md
+
+    - id: step-05-copy-ativos
+      name: Copy dos Ativos
+      type: agent
+      agent: clara-copy
+      execution: inline
+      file: steps/step-05-copy-ativos.md
+
+    - id: step-06-roteiros-video
+      name: Roteiros de Vídeo
+      type: agent
+      agent: rafael-roteiro
+      execution: inline
+      file: steps/step-06-roteiros-video.md
+
+    - id: step-07-aprovacao-ativos
+      name: Aprovação dos Ativos
+      type: checkpoint
+      file: steps/step-07-aprovacao-ativos.md
+
+    - id: step-08-revisao-final
+      name: Revisão Final
+      type: agent
+      agent: vera-veredicto
+      execution: inline
+      file: steps/step-08-revisao-final.md
+
+  checkpoints:
+    - step-01-briefing-cliente
+    - step-03-aprovacao-estrategia
+    - step-07-aprovacao-ativos

@@ -1,0 +1,69 @@
+squad:
+  code: luqz-aquisicao-conversao
+  name: Pipeline de Aquisição e Conversão
+  description: Pipeline integrado da LUQZ — conecta os squads de Estratégia, Demanda e Inteligência para entregar o pacote completo de ativos de marketing e comercial de um cliente.
+  icon: 🔗
+  language: Português (Brasil)
+  type: pipeline  # pipeline multi-squad — orquestra agentes de squads distintos
+
+# Squads participantes deste pipeline
+squads:
+  - code: luqz-estrategia
+    name: Squad Estratégia
+    function: Define arquitetura de receita, ICP e sequência de ativos
+  - code: luqz-demanda
+    name: Squad Demanda
+    function: Produz os ativos — copy, roteiros e plano de mídia
+  - code: luqz-inteligencia
+    name: Squad Inteligência / QA
+    function: Revisa qualidade e emite veredicto antes da entrega ao cliente
+
+agents:
+  - id: estela-estrategia
+    name: Estela Estratégia
+    icon: 🧠
+    title: Estrategista de Performance
+    squad: luqz-estrategia
+  - id: marcio-midia
+    name: Márcio Mídia
+    icon: 📋
+    title: Planejador de Mídia
+    squad: luqz-demanda
+  - id: clara-copy
+    name: Clara Copy
+    icon: ✍️
+    title: Copywriter e Redatora
+    squad: luqz-demanda
+  - id: rafael-roteiro
+    name: Rafael Roteiro
+    icon: 🎬
+    title: Roteirista de Vídeo
+    squad: luqz-demanda
+  - id: vera-veredicto
+    name: Vera Veredicto
+    icon: ✅
+    title: Revisora de Qualidade
+    squad: luqz-inteligencia
+
+skills:
+  - web_search
+  - web_fetch
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+  - pipeline/data/tone-of-voice.md
+
+pipeline:
+  steps:
+    - step-01-briefing-cliente
+    - step-02-estrategia-performance
+    - step-03-aprovacao-estrategia
+    - step-04-plano-midia
+    - step-05-copy-ativos
+    - step-06-roteiros-video
+    - step-07-aprovacao-ativos
+    - step-08-revisao-final

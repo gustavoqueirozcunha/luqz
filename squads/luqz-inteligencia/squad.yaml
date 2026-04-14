@@ -1,0 +1,20 @@
+squad:
+  code: luqz-inteligencia
+  name: Squad Inteligência
+  description: Revisa qualidade dos ativos, emite veredicto e fecha o pipeline — garantindo que nenhum entregável saia sem aprovação formal.
+  icon: 🔍
+  language: Português (Brasil)
+  type: functional  # squad funcional — participa do Pipeline de Aquisição e Conversão
+
+pipeline_participation:
+  - luqz-aquisicao-conversao
+
+agents:
+  - id: vera-veredicto
+    name: Vera Veredicto
+    icon: ✅
+    title: Revisora de Qualidade
+
+skills:
+  - web_search
+  - web_fetch

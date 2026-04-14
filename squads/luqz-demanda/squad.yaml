@@ -1,0 +1,34 @@
+squad:
+  code: luqz-demanda
+  name: Squad Demanda
+  description: Produz os ativos do cliente — copy de landing pages, carrosseis, estáticos, roteiros de vídeo e plano de mídia.
+  icon: 📣
+  language: Português (Brasil)
+  type: functional  # squad funcional — participa do Pipeline de Aquisição e Conversão
+
+pipeline_participation:
+  - luqz-aquisicao-conversao
+  - luqz-conteudo
+
+agents:
+  - id: marcio-midia
+    name: Márcio Mídia
+    icon: 📋
+    title: Planejador de Mídia
+  - id: clara-copy
+    name: Clara Copy
+    icon: ✍️
+    title: Copywriter e Redatora
+  - id: rafael-roteiro
+    name: Rafael Roteiro
+    icon: 🎬
+    title: Roteirista de Vídeo
+  - id: designer-canva
+    name: Designer Canva
+    icon: 🖼️
+    title: Designer de Layout
+
+skills:
+  - web_search
+  - web_fetch
+  - canva

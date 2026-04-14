@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(curl -s -L -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8\" \"http://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj/executions?limit=5\")",
+      "Bash(python3 -c ':*)",
+      "Bash(\\\\\"Monta payload:*)",
+      "Bash(curl -s -X PUT http://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8' -H 'Content-Type: application/json' -d @-)",
+      "Bash(curl -s -L -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8\" \"http://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj\" -o /tmp/wf.json)",
+      "Bash(curl -s -L -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiN2E0Zjk5ZjctZTM4ZC00MWQxLThhYmQtZmYzOWUyNGFkZTk3IiwiaWF0IjoxNzc0NDYzMTgwfQ.4MAiA3a2YdKZyfQYZqPTrIq1HoC_BGuH61hYbblVad8\" \"https://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj\")",
+      "Bash(node -e \" const data = []; process.stdin.on\\('data', d => data.push\\(d\\)\\); process.stdin.on\\('end', \\(\\) => { const wf = JSON.parse\\(data.join\\(''\\)\\); console.log\\(JSON.stringify\\({nodes: wf.nodes, connections: wf.connections, settings: wf.settings, staticData: wf.staticData}, null, 2\\)\\); }\\); \")",
+      "Bash(curl -s https://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzI3NDIzMi01ZWY2LTQ4YzgtYTJiMS1mN2ZlNGM5OGYzMjkiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ0MjA1MTI2fQ.zp0tQJsGBHNBNvLgntHXkwCsFNDST6xsQsalPKaOCJM')",
+      "Bash(curl -sv https://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzI3NDIzMi01ZWY2LTQ4YzgtYTJiMS1mN2ZlNGM5OGYzMjkiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ0MjA1MTI2fQ.zp0tQJsGBHNBNvLgntHXkwCsFNDST6xsQsalPKaOCJM')",
+      "Bash(curl -s -X PUT https://editor.luqz.com.br/api/v1/workflows/endVw2rhUyrmhcDj -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNTYzMmM1MTItY2VlYi00MTEwLWExNTAtODlmNWYwNTMzOTZkIiwiaWF0IjoxNzc1NzkwMzcxfQ.wVEYy42_WJD5BmoWhVKVvhy0_3cXqI3Qtr8Lnc4ag1A' -H 'Content-Type: application/json' -d @C:/Users/gusta/wf_patched.json)",
+      "Bash(node -e \"const c=[];process.stdin.on\\('data',d=>c.push\\(d\\)\\);process.stdin.on\\('end',\\(\\)=>{const r=JSON.parse\\(Buffer.concat\\(c\\).toString\\(\\)\\);console.log\\(r.id?'OK '+r.updatedAt:'ERRO: '+JSON.stringify\\(r\\)\\);}\\);\")",
+      "WebSearch",
+      "WebFetch(domain:docs.google.com)",
+      "WebFetch(domain:doc-08-60-sheets.googleusercontent.com)",
+      "Read(//c/Users/gusta/.claude/**)",
+      "mcp__claude_ai_Canva__list-brand-kits",
+      "mcp__claude_ai_Canva__search-designs",
+      "Read(//c/Users/gusta/OneDrive/Área de Trabalho/**)",
+      "mcp__claude_ai_Canva__generate-design",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(start \"\" \"c:\\\\Users\\\\gusta\\\\OneDrive\\\\Área de Trabalho\\\\Repositório LUQZ\\\\clientes\\\\Dr Cassio Goulart\\\\M1\\\\artes\\\\carrossel1_provas.html\")",
+      "Bash(start \"\" \"c:\\\\Users\\\\gusta\\\\OneDrive\\\\Área de Trabalho\\\\Repositório LUQZ\\\\clientes\\\\Dr Cassio Goulart\\\\M1\\\\artes\\\\carrossel2_mitos.html\")"
+    ]
+  }
+}

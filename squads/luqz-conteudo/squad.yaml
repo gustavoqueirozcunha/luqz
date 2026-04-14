@@ -1,0 +1,50 @@
+squad:
+  code: luqz-conteudo
+  name: Pipeline de Produção de Conteúdo
+  description: Produz carrosséis e posts de forma padronizada e escalável — do briefing ao layout final no Canva.
+  icon: 🎨
+  language: Português (Brasil)
+  type: pipeline
+
+pipeline_participation: []
+
+squads:
+  - code: luqz-estrategia
+  - code: luqz-demanda
+  - code: luqz-inteligencia
+
+agents:
+  - id: Bento-estrategia
+    name: Bento Estrategista
+    icon: 🧠
+    title: Estrategista de Conteúdo
+    squad: luqz-estrategia
+
+  - id: Mateo-copy
+    name: Mateo Copy
+    icon: ✍️
+    title: Copywriter de Slides
+    squad: luqz-demanda
+
+  - id: rafael-roteiro
+    name: Rafael Roteiro
+    icon: 🎬
+    title: Diretor Visual
+    squad: luqz-demanda
+
+  - id: designer-canva
+    name: Caetano - Designer Canva
+    icon: 🖼️
+    title: Designer de Layout
+    squad: luqz-demanda
+
+  - id: vera-veredicto
+    name: Vera Veredicto
+    icon: ✅
+    title: Revisora de Qualidade
+    squad: luqz-inteligencia
+
+skills:
+  - canva
+  - nano-banana-2
+  - image-ai-generator

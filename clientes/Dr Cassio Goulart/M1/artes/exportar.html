@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>LUQZ — Exportador de Carrosséis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #111; color: #fff; padding: 40px; }
+h1 { font-size: 24px; font-weight: 300; margin-bottom: 10px; color: #888; }
+h2 { font-size: 32px; font-weight: 800; margin: 60px 0 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.download-all-btn {
+  background: #3B82F6; color: #fff; border: none; padding: 16px 40px;
+  font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer;
+  margin: 20px 0 40px; font-family: 'Inter', sans-serif;
+}
+.download-all-btn:hover { background: #2563EB; }
+.slide-wrapper { margin: 30px auto; position: relative; width: 1080px; }
+.download-btn {
+  position: absolute; top: 20px; right: 20px; z-index: 10;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  padding: 12px 24px; border-radius: 30px; cursor: pointer;
+  font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif;
+}
+.download-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* ============ SLIDES ============ */
+.slide {
+  width: 1080px; height: 1350px; position: relative; overflow: hidden;
+}
+.slide-dark { background: #0A0A0A; }
+.slide-white { background: #FFFFFF; }
+.slide-blue { background: #0B0F1A; }
+.content {
+  position: absolute; left: 120px; right: 120px;
+  top: 200px; bottom: 200px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.page-num {
+  position: absolute; bottom: 80px; right: 100px;
+  font-size: 28px; font-weight: 400; color: #444; letter-spacing: 2px;
+}
+
+/* CARROSSEL 1 */
+.c1-main { font-size: 88px; font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -2px; }
+.c1-red { color: #FF3B30; }
+.c1-sub { font-size: 52px; font-weight: 400; color: #ccc; margin-top: 30px; line-height: 1.3; }
+.badge { display: inline-block; background: #FF3B30; color: #fff; font-size: 24px; font-weight: 700; padding: 10px 28px; border-radius: 8px; letter-spacing: 3px; margin-bottom: 80px; align-self: flex-start; }
+.quote { font-size: 48px; font-weight: 300; font-style: italic; color: #666; line-height: 1.4; margin-bottom: 80px; }
+.qm { color: #444; font-size: 72px; }
+.answer { font-size: 46px; font-weight: 700; color: #fff; line-height: 1.45; }
+.s4-label { font-size: 28px; font-weight: 500; color: #888; letter-spacing: 4px; margin-bottom: 60px; }
+.s4-main { font-size: 64px; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -1px; }
+.s5c { position: absolute; left: 120px; right: 120px; top: 200px; bottom: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.s5t { font-size: 46px; font-weight: 500; color: #111; line-height: 1.5; margin-bottom: 100px; }
+.s5b { display: inline-block; background: #0A0A0A; color: #fff; font-size: 36px; font-weight: 800; padding: 40px 80px; border-radius: 100px; }
+.pnd { color: #bbb; }
+
+/* CARROSSEL 2 */
+.c2w { font-size: 92px; font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -2px; }
+.c2b { font-size: 92px; font-weight: 900; color: #3B82F6; line-height: 1.05; letter-spacing: -2px; }
+.c2sub { font-size: 36px; font-weight: 400; color: #94A3B8; margin-top: 40px; line-height: 1.4; }
+.sn { font-size: 130px; font-weight: 900; color: #3B82F6; opacity: 0.7; line-height: 1; margin-bottom: 40px; }
+.st { font-size: 56px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 50px; }
+.sb { font-size: 40px; font-weight: 400; color: #94A3B8; line-height: 1.55; }
+.dv { width: 100%; height: 2px; background: #2d3748; margin: 50px 0; }
+.zlg { font-size: 44px; font-weight: 700; color: #64748b; margin-bottom: 12px; }
+.zg { font-size: 38px; font-weight: 400; color: #64748b; line-height: 1.5; }
+.zlw { font-size: 44px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+.zw { font-size: 38px; font-weight: 500; color: #fff; line-height: 1.5; }
+.c2cta-c { position: absolute; left: 120px; right: 120px; top: 200px; bottom: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.c2m { font-size: 50px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 30px; }
+.c2s { font-size: 38px; font-weight: 400; color: #94A3B8; margin-bottom: 100px; }
+.c2btn { display: inline-block; background: #fff; color: #0B0F1A; font-size: 34px; font-weight: 800; padding: 40px 70px; border-radius: 100px; }
+.pnb { color: #4a5568; }
+</style>
+</head>
+<body>
+
+<h1>LUQZ Performance — Squad Designer</h1>
+<h2>Dr. Cássio Goulart — Semana 2</h2>
+<button class="download-all-btn" onclick="downloadAll()">⬇ BAIXAR TODOS OS SLIDES (PNG)</button>
+
+<!-- ========== CARROSSEL 1 ========== -->
+<h2>Carrossel 1 — Mentiras de Advogados</h2>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c1s1','C1_Slide1_Capa')">⬇ PNG</button>
+  <div class="slide slide-dark" id="c1s1">
+    <div class="content">
+      <div class="c1-main">O QUE UM<br>ADVOGADO</div>
+      <div class="c1-main c1-red">NUNCA DEVERIA</div>
+      <div class="c1-sub">te prometer no divórcio.</div>
+    </div>
+    <div class="page-num">01/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c1s2','C1_Slide2_Mentira1')">⬇ PNG</button>
+  <div class="slide slide-dark" id="c1s2">
+    <div class="content">
+      <div class="badge">MENTIRA 01</div>
+      <div class="quote"><span class="qm">"</span>Vou destruir ele.<span class="qm">"</span></div>
+      <div class="answer">O papel do advogado é proteger o que é seu. Não criar uma guerra que prejudica seus filhos.</div>
+    </div>
+    <div class="page-num">02/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c1s3','C1_Slide3_Mentira2')">⬇ PNG</button>
+  <div class="slide slide-dark" id="c1s3">
+    <div class="content">
+      <div class="badge">MENTIRA 02</div>
+      <div class="quote"><span class="qm">"</span>Guarda total pra você.<span class="qm">"</span></div>
+      <div class="answer">A justiça prioriza compartilhada. Prometer 100% sem provas graves é charlatanismo.</div>
+    </div>
+    <div class="page-num">03/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c1s4','C1_Slide4_FocoReal')">⬇ PNG</button>
+  <div class="slide slide-dark" id="c1s4">
+    <div class="content">
+      <div class="s4-label">O FOCO REAL.</div>
+      <div class="s4-main">O divórcio é o meio prático e veloz pra sua vida nova não pagar as contas da antiga.</div>
+    </div>
+    <div class="page-num">04/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c1s5','C1_Slide5_CTA')">⬇ PNG</button>
+  <div class="slide slide-white" id="c1s5">
+    <div class="s5c">
+      <div class="s5t">Você precisa de fatos.<br>Não de promessas baratas.</div>
+      <div class="s5b">AGENDAR CONSULTA NO WHATSAPP</div>
+    </div>
+    <div class="page-num pnd">05/05</div>
+  </div>
+</div>
+
+<!-- ========== CARROSSEL 2 ========== -->
+<h2>Carrossel 2 — Passo a Passo do Divórcio</h2>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c2s1','C2_Slide1_Capa')">⬇ PNG</button>
+  <div class="slide slide-blue" id="c2s1">
+    <div class="content">
+      <div class="c2w">O EXATO</div>
+      <div class="c2b">PASSO A PASSO</div>
+      <div class="c2w">DE UM DIVÓRCIO.</div>
+      <div class="c2sub">Do primeiro dia até cair na sua conta.</div>
+    </div>
+    <div class="page-num pnb">01/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c2s2','C2_Slide2_Passo1')">⬇ PNG</button>
+  <div class="slide slide-blue" id="c2s2">
+    <div class="content">
+      <div class="sn">01</div>
+      <div class="st">Levantamento<br>Patrimonial.</div>
+      <div class="sb">Não movemos um papel antes de listar bens, dívidas escondidas e travar a comunhão.</div>
+    </div>
+    <div class="page-num pnb">02/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c2s3','C2_Slide3_Passo2')">⬇ PNG</button>
+  <div class="slide slide-blue" id="c2s3">
+    <div class="content">
+      <div class="sn">02</div>
+      <div class="st">Acordo de Pensão<br>e Guarda.</div>
+      <div class="sb">Filhos menores entram como prioridade. Cravamos provas dos custos e valores inegociáveis.</div>
+    </div>
+    <div class="page-num pnb">03/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c2s4','C2_Slide4_Passo3')">⬇ PNG</button>
+  <div class="slide slide-blue" id="c2s4">
+    <div class="content">
+      <div class="sn">03</div>
+      <div class="zlg">Consensual</div>
+      <div class="zg">Acordo mútuo. Resolve rápido no cartório.</div>
+      <div class="dv"></div>
+      <div class="zlw">Litígio</div>
+      <div class="zw">Sem acordo, acionamos o juiz<br>com robustez total.</div>
+    </div>
+    <div class="page-num pnb">04/05</div>
+  </div>
+</div>
+
+<div class="slide-wrapper">
+  <button class="download-btn" onclick="downloadSlide('c2s5','C2_Slide5_CTA')">⬇ PNG</button>
+  <div class="slide slide-blue" id="c2s5">
+    <div class="c2cta-c">
+      <div class="c2m">Quanto mais tempo demora,<br>mais patrimônio corre<br>risco de sumir.</div>
+      <div class="c2s">Vamos estruturar sua saída.</div>
+      <div class="c2btn">CHAMAR EQUIPE NO WHATSAPP</div>
+    </div>
+    <div class="page-num pnb">05/05</div>
+  </div>
+</div>
+
+<script>
+function downloadSlide(id, filename) {
+  const el = document.getElementById(id);
+  html2canvas(el, { scale: 1, width: 1080, height: 1350, useCORS: true }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = filename + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+function downloadAll() {
+  const slides = [
+    ['c1s1','C1_Slide1_Capa'], ['c1s2','C1_Slide2_Mentira1'], ['c1s3','C1_Slide3_Mentira2'],
+    ['c1s4','C1_Slide4_FocoReal'], ['c1s5','C1_Slide5_CTA'],
+    ['c2s1','C2_Slide1_Capa'], ['c2s2','C2_Slide2_Passo1'], ['c2s3','C2_Slide3_Passo2'],
+    ['c2s4','C2_Slide4_Passo3'], ['c2s5','C2_Slide5_CTA']
+  ];
+  let delay = 0;
+  slides.forEach(([id, name]) => {
+    setTimeout(() => downloadSlide(id, name), delay);
+    delay += 1500;
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+squad:
+  code: luqz-estrategia
+  name: Squad Estratégia
+  description: Define a arquitetura de receita dos clientes LUQZ — diagnóstico, ICP, posicionamento e sequência de ativos.
+  icon: 🧠
+  language: Português (Brasil)
+  type: functional  # squad funcional — participa do Pipeline de Aquisição e Conversão
+
+pipeline_participation:
+  - luqz-aquisicao-conversao
+
+agents:
+  - id: estela-estrategia
+    name: Estela Estratégia
+    icon: 🧠
+    title: Estrategista de Performance
+
+skills:
+  - web_search
+  - web_fetch

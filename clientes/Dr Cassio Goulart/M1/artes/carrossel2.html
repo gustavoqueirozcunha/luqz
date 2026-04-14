@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #000; }
+.slide {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 40px;
+}
+.slide-blue { background: #0B0F1A; }
+.content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 200px;
+  bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-num {
+  position: absolute;
+  bottom: 80px;
+  right: 100px;
+  font-size: 28px;
+  font-weight: 400;
+  color: #4a5568;
+  letter-spacing: 2px;
+}
+/* Slide 1 */
+.s1-white { font-size: 92px; font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -2px; }
+.s1-blue { font-size: 92px; font-weight: 900; color: #3B82F6; line-height: 1.05; letter-spacing: -2px; }
+.s1-sub { font-size: 36px; font-weight: 400; color: #94A3B8; margin-top: 40px; line-height: 1.4; }
+/* Slides 2-4 */
+.step-num {
+  font-size: 130px;
+  font-weight: 900;
+  color: #3B82F6;
+  opacity: 0.7;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+.step-title {
+  font-size: 56px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 50px;
+}
+.step-body {
+  font-size: 40px;
+  font-weight: 400;
+  color: #94A3B8;
+  line-height: 1.55;
+}
+/* Slide 4 divided */
+.divider {
+  width: 100%;
+  height: 2px;
+  background: #2d3748;
+  margin: 50px 0;
+}
+.zone-gray {
+  font-size: 38px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.zone-label-gray {
+  font-size: 44px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.zone-white {
+  font-size: 38px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.5;
+}
+.zone-label-white {
+  font-size: 44px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+/* Slide 5 */
+.s5-content {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 200px;
+  bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.s5-main {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.45;
+  margin-bottom: 30px;
+}
+.s5-sub {
+  font-size: 38px;
+  font-weight: 400;
+  color: #94A3B8;
+  margin-bottom: 100px;
+}
+.s5-btn {
+  display: inline-block;
+  background: #fff;
+  color: #0B0F1A;
+  font-size: 34px;
+  font-weight: 800;
+  padding: 40px 70px;
+  border-radius: 100px;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide slide-blue" id="slide1">
+  <div class="content">
+    <div class="s1-white">O EXATO</div>
+    <div class="s1-blue">PASSO A PASSO</div>
+    <div class="s1-white">DE UM DIVÓRCIO.</div>
+    <div class="s1-sub">Do primeiro dia até cair na sua conta.</div>
+  </div>
+  <div class="page-num">01/05</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide slide-blue" id="slide2">
+  <div class="content">
+    <div class="step-num">01</div>
+    <div class="step-title">Levantamento<br>Patrimonial.</div>
+    <div class="step-body">Não movemos um papel antes de listar bens, dívidas escondidas e travar a comunhão.</div>
+  </div>
+  <div class="page-num">02/05</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide slide-blue" id="slide3">
+  <div class="content">
+    <div class="step-num">02</div>
+    <div class="step-title">Acordo de Pensão<br>e Guarda.</div>
+    <div class="step-body">Filhos menores entram como prioridade. Cravamos provas dos custos e valores inegociáveis.</div>
+  </div>
+  <div class="page-num">03/05</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide slide-blue" id="slide4">
+  <div class="content">
+    <div class="step-num">03</div>
+    <div class="zone-label-gray">Consensual</div>
+    <div class="zone-gray">Acordo mútuo. Resolve rápido no cartório.</div>
+    <div class="divider"></div>
+    <div class="zone-label-white">Litígio</div>
+    <div class="zone-white">Sem acordo, acionamos o juiz<br>com robustez total.</div>
+  </div>
+  <div class="page-num">04/05</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide slide-blue" id="slide5">
+  <div class="s5-content">
+    <div class="s5-main">Quanto mais tempo demora,<br>mais patrimônio corre<br>risco de sumir.</div>
+    <div class="s5-sub">Vamos estruturar sua saída.</div>
+    <div class="s5-btn">CHAMAR EQUIPE NO WHATSAPP</div>
+  </div>
+  <div class="page-num">05/05</div>
+</div>
+
+</body>
+</html>

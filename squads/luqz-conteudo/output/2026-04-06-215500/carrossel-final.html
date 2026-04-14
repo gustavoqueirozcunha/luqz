@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel — Minimalista Extreme (SaaS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #101010;
+            --light: #F9F9F9;
+            --accent: #0066FF;
+            --slide-width: 540px; 
+            --slide-height: 675px; 
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #222;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            align-items: center;
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .slide {
+            width: var(--slide-width);
+            height: var(--slide-height);
+            flex-shrink: 0;
+            position: relative;
+            box-sizing: border-box;
+            /* White space massivo: + padding = visual mais luxuoso e centralizado */
+            padding: 100px 60px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border-radius: 8px; 
+        }
+
+        .slide.dark { background-color: var(--dark); color: var(--light); }
+        .slide.light { background-color: var(--light); color: var(--dark); }
+        .slide.accent { background-color: var(--accent); color: #FFFFFF; }
+
+        .layout-center { justify-content: center; }
+
+        /* Typography - Bigger, more contrast */
+        h1 {
+            font-weight: 700;
+            font-size: 48px; /* High impact */
+            line-height: 1.1;
+            margin: 0 0 40px 0;
+            letter-spacing: -0.03em;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 26px; /* Highly legible */
+            line-height: 1.5;
+            margin: 0;
+            opacity: 0.75;
+        }
+
+        .text-accent { color: var(--accent); }
+        .slide.light .text-accent { color: var(--accent); }
+
+        /* Super minimal decor */
+        .wireframe-mesh {
+            position: absolute;
+            bottom: -50px; left: -100px;
+            width: 500px; height: 500px;
+            background-image: radial-gradient(var(--light) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+            z-index: 0; pointer-events: none;
+        }
+
+        .slide-content { position: relative; z-index: 10; }
+    </style>
+</head>
+<body>
+
+<div class="carousel-container">
+    <!-- Slide 1 -->
+    <div class="slide dark layout-center">
+        <div class="wireframe-mesh"></div>
+        <div class="slide-content">
+            <h1>Parem de gastar mais com <span class="text-accent">anúncios.</span></h1>
+            <p>Seu problema não é volume de leads. É a completa ausência de processo para fechar.</p>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide light layout-center">
+        <div class="slide-content">
+            <h1>O <span class="text-accent">balde furado</span> do seu tráfego.</h1>
+            <p>Metas batidas. Vendedores reclamando de "leads ruins". Faturamento congelado. É aqui que o seu dinheiro evapora.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide dark layout-center">
+        <div class="slide-content">
+            <h1>A falha invisível de <span class="text-accent">handoff.</span></h1>
+            <p>O marketing culpa as vendas. As vendas culpam os leads. O verdadeiro erro está na passagem do bastão.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide light layout-center">
+        <div class="grid-pattern"></div>
+        <div class="slide-content">
+            <h1>Sem cadência, seu <span class="text-accent">caixa queima.</span></h1>
+            <p>Demorar 6 horas no primeiro contato faz todo o seu investimento em tráfego simplesmente virar pó.</p>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide dark layout-center">
+        <div class="slide-content">
+            <h1><span class="text-accent">Arrume a casa</span> antes do tráfego.</h1>
+            <p>Congele orçamentos. Crie playbooks comerciais rígidos. Trate o atendimento como cirurgia. Escale arquitetura, não caos.</p>
+        </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide light layout-center">
+        <div class="slide-content">
+            <h1><span class="text-accent">Máquina de vendas</span> ou fogueira.</h1>
+            <p>Mantenha o marketing isolado e continue queimando verba. Estruture a jornada completa e veja o faturamento previsível nascer.</p>
+        </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide accent layout-center">
+        <div class="slide-content" style="text-align: center;">
+            <h1 style="font-size: 58px;">Resolva o gargalo.<br/>Link na bio.</h1>
+            <p style="opacity: 1; font-weight: 500;">Fatura mais de R$ 50k mas a operação travou? Agende um Raio-X exclusivo da sua estrutura no WhatsApp.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

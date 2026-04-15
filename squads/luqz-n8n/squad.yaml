@@ -1,0 +1,46 @@
+squad:
+  code: luqz-n8n
+  name: Squad N8N — Automações
+  description: Squad especialista em visibilidade, padronização e escala de todos os fluxos de automação da LUQZ. Opera em pipeline sequencial — mapeamento → auditoria → otimização → documentação. Garante que nenhum fluxo exista sem estar documentado, auditado e dentro do padrão de engenharia definido.
+  icon: ⚙️
+  language: Português (Brasil)
+  type: functional
+
+agents:
+  - id: n8n-mapper
+    name: N8N Mapper
+    icon: 🗺️
+    title: Mapeador de Fluxos
+    squad: luqz-n8n
+  - id: n8n-auditor
+    name: N8N Auditor
+    icon: 🔍
+    title: Auditor de Automações
+    squad: luqz-n8n
+  - id: n8n-designer
+    name: N8N Designer
+    icon: 🏗️
+    title: Arquiteto de Fluxos
+    squad: luqz-n8n
+  - id: n8n-docs
+    name: N8N Docs
+    icon: 📄
+    title: Documentador de Automações
+    squad: luqz-n8n
+
+skills:
+  - web_fetch
+
+data:
+  - pipeline/data/n8n-standards.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/naming-conventions.md
+  - pipeline/data/integration-catalog.md
+
+pipeline:
+  steps:
+    - step-01-mapeamento
+    - step-02-auditoria
+    - step-03-otimizacao
+    - step-04-aprovacao
+    - step-05-documentacao-final

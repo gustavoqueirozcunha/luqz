@@ -1,0 +1,6 @@
+id,displayName,icon,title,path,squad
+estela-estrategia,Estela Estratégia,🧠,Estrategista de Performance,./agents/estela-estrategia.agent.md,luqz-estrategia
+marcio-midia,Márcio Mídia,📋,Planejador de Mídia,./agents/marcio-midia.agent.md,luqz-demanda
+clara-copy,Clara Copy,✍️,Copywriter e Redatora,./agents/clara-copy.agent.md,luqz-demanda
+rafael-roteiro,Rafael Roteiro,🎬,Roteirista de Vídeo,./agents/rafael-roteiro.agent.md,luqz-demanda
+vera-veredicto,Vera Veredicto,✅,Revisora de Qualidade,./agents/vera-veredicto.agent.md,luqz-inteligencia

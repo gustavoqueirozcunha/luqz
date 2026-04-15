@@ -1,0 +1,54 @@
+{
+  "squad": "luqz-conteudo",
+  "status": "running",
+  "step": {
+    "current": 7,
+    "total": 7,
+    "label": "step-07-revisao-final"
+  },
+  "agents": [
+    {
+      "id": "estela-estrategia",
+      "name": "Estela Estratégia",
+      "icon": "🧠",
+      "status": "done",
+      "desk": { "col": 1, "row": 1 }
+    },
+    {
+      "id": "clara-copy",
+      "name": "Clara Copy",
+      "icon": "✍️",
+      "status": "done",
+      "desk": { "col": 2, "row": 1 }
+    },
+    {
+      "id": "rafael-roteiro",
+      "name": "Rafael Roteiro",
+      "icon": "🎬",
+      "status": "done",
+      "desk": { "col": 3, "row": 1 }
+    },
+    {
+      "id": "designer-canva",
+      "name": "Designer Canva",
+      "icon": "🖼️",
+      "status": "done",
+      "desk": { "col": 1, "row": 2 }
+    },
+    {
+      "id": "vera-veredicto",
+      "name": "Vera Veredicto",
+      "icon": "✅",
+      "status": "working",
+      "desk": { "col": 2, "row": 2 }
+    }
+  ],
+  "handoff": {
+    "from": "designer-canva",
+    "to": "vera-veredicto",
+    "message": "Instruções de layout (Modo 1) enviadas. Proceder com a revisão final.",
+    "completedAt": "2026-04-06T21:56:40Z"
+  },
+  "startedAt": "2026-04-06T21:55:00Z",
+  "updatedAt": "2026-04-06T21:56:45Z"
+}

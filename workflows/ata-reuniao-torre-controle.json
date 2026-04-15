@@ -1,0 +1,280 @@
+{
+  "name": "Ata de Reunião → Torre de Controle",
+  "nodes": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567801",
+      "name": "Webhook Origem Reunião",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "ata-reuniao-luqz",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ata-reuniao",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f01234567802",
+      "name": "Definir Variáveis de Contexto",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [440, 300],
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "v01",
+              "name": "team_id",
+              "value": "3030323",
+              "type": "string"
+            },
+            {
+              "id": "v02",
+              "name": "space_id",
+              "value": "90131717523",
+              "type": "string"
+            },
+            {
+              "id": "v03",
+              "name": "lista_alvo",
+              "value": "Torre de Controle",
+              "type": "string"
+            },
+            {
+              "id": "v04",
+              "name": "fallback_folder",
+              "value": "Não Classificado",
+              "type": "string"
+            },
+            {
+              "id": "v05",
+              "name": "nome_cliente",
+              "value": "={{ ($json.body?.client_name ?? $json.body?.call?.title?.split(/[|\\-]/)[0] ?? $json.body?.title?.split(/[|\\-]/)[0] ?? '').trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "v06",
+              "name": "titulo_reuniao",
+              "value": "={{ $json.body?.call?.title ?? $json.body?.title ?? 'Reunião sem título' }}",
+              "type": "string"
+            },
+            {
+              "id": "v07",
+              "name": "conteudo_ata",
+              "value": "={{ (() => { const v = $json.body?.call?.summary ?? $json.body?.summary ?? $json.body?.call?.transcript ?? $json.body?.transcript ?? ''; if (Array.isArray(v)) return v.map(x => typeof x === 'object' ? (x.text ?? x.content ?? x.message ?? JSON.stringify(x)) : String(x)).join('\\n'); return typeof v === 'object' ? JSON.stringify(v) : String(v ?? ''); })() }}",
+              "type": "string"
+            },
+            {
+              "id": "v08",
+              "name": "data_reuniao",
+              "value": "={{ ($json.body?.call?.start_time ?? $json.body?.date ?? new Date().toISOString()).substring(0, 10) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-012345678903",
+      "name": "Buscar Folders do Space",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ 'https://api.clickup.com/api/v2/space/' + $json.space_id + '/folder' }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "clickUpApi",
+        "options": {}
+      },
+      "credentials": {
+        "clickUpApi": {
+          "id": "clickup-cred",
+          "name": "ClickUp account"
+        }
+      }
+    },
+    {
+      "id": "d4e5f6a7-b8c9-0123-defa-123456789004",
+      "name": "Mapear Cliente → Folder",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 300],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const ctx = $('Definir Variáveis de Contexto').first().json;\nconst folders = $input.first().json.folders ?? [];\n\nconst normalize = (s) =>\n  (s ?? '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').trim();\n\nconst nomeNorm = normalize(ctx.nome_cliente);\n\n// Match: exato → parcial → fallback 'Não Classificado' → primeiro folder\nlet folder =\n  folders.find(f => normalize(f.name) === nomeNorm) ??\n  folders.find(f => nomeNorm && (normalize(f.name).includes(nomeNorm) || nomeNorm.includes(normalize(f.name)))) ??\n  folders.find(f => normalize(f.name).includes(normalize(ctx.fallback_folder)));\n\nif (!folder && folders.length > 0) folder = folders[0];\nif (!folder) throw new Error('Nenhum folder encontrado. Verifique space_id: ' + ctx.space_id);\n\nreturn [{ json: { ...ctx, folder_id: folder.id, folder_name: folder.name } }];"
+      }
+    },
+    {
+      "id": "e5f6a7b8-c9d0-1234-efab-234567890105",
+      "name": "Buscar Listas do Folder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1160, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ 'https://api.clickup.com/api/v2/folder/' + $json.folder_id + '/list' }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "clickUpApi",
+        "options": {}
+      },
+      "credentials": {
+        "clickUpApi": {
+          "id": "clickup-cred",
+          "name": "ClickUp account"
+        }
+      }
+    },
+    {
+      "id": "f6a7b8c9-d0e1-2345-fabc-345678901206",
+      "name": "Filtrar Lista Torre de Controle",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1400, 300],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const ctx = $('Mapear Cliente → Folder').first().json;\nconst lists = $input.first().json.lists ?? [];\n\nconst normalize = (s) =>\n  (s ?? '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').trim();\n\nconst alvo = normalize(ctx.lista_alvo ?? 'torre de controle');\n\n// Match: nome exato → contém 'torre de controle' → contém 'controle' ou 'torre' → primeira lista\nconst lista =\n  lists.find(l => normalize(l.name).includes(alvo)) ??\n  lists.find(l => normalize(l.name).includes('controle') || normalize(l.name).includes('torre')) ??\n  lists[0];\n\nif (!lista) throw new Error(`Nenhuma lista no folder \"${ctx.folder_name}\" (id: ${ctx.folder_id})`);\n\nreturn [{ json: { ...ctx, list_id: lista.id, list_name: lista.name } }];"
+      }
+    },
+    {
+      "id": "a7b8c9d0-e1f2-3456-abcd-456789012307",
+      "name": "Criar Ata no ClickUp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1640, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://api.clickup.com/api/v2/list/' + $json.list_id + '/task' }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "clickUpApi",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "=Ata | {{ $json.titulo_reuniao }} | {{ $json.data_reuniao }}"
+            },
+            {
+              "name": "description",
+              "value": "={{ $json.conteudo_ata }}"
+            },
+            {
+              "name": "status",
+              "value": "to do"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {
+        "clickUpApi": {
+          "id": "clickup-cred",
+          "name": "ClickUp account"
+        }
+      }
+    },
+    {
+      "id": "b8c9d0e1-f2a3-4567-bcde-567890123408",
+      "name": "Responder Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1880, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, task_id: $json.id, task_url: $json.url, list: $('Filtrar Lista Torre de Controle').first().json.list_name, folder: $('Filtrar Lista Torre de Controle').first().json.folder_name, cliente_mapeado: $('Filtrar Lista Torre de Controle').first().json.nome_cliente }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Origem Reunião": {
+      "main": [
+        [
+          {
+            "node": "Definir Variáveis de Contexto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Definir Variáveis de Contexto": {
+      "main": [
+        [
+          {
+            "node": "Buscar Folders do Space",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Folders do Space": {
+      "main": [
+        [
+          {
+            "node": "Mapear Cliente → Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mapear Cliente → Folder": {
+      "main": [
+        [
+          {
+            "node": "Buscar Listas do Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Listas do Folder": {
+      "main": [
+        [
+          {
+            "node": "Filtrar Lista Torre de Controle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar Lista Torre de Controle": {
+      "main": [
+        [
+          {
+            "node": "Criar Ata no ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Ata no ClickUp": {
+      "main": [
+        [
+          {
+            "node": "Responder Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

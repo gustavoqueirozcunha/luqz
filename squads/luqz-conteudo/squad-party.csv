@@ -1,0 +1,6 @@
+id,displayName,icon,title,path,squad
+estela-estrategia,Estela Estratégia,🧠,Estrategista de Conteúdo,./agents/estela-estrategia.agent.md,luqz-estrategia
+clara-copy,Clara Copy,✍️,Copywriter de Slides,./agents/clara-copy.agent.md,luqz-demanda
+rafael-roteiro,Rafael Roteiro,🎬,Diretor Visual,./agents/rafael-roteiro.agent.md,luqz-demanda
+designer-canva,Designer Canva,🖼️,Designer de Layout,./agents/designer-canva.agent.md,luqz-demanda
+vera-veredicto,Vera Veredicto,✅,Revisora de Qualidade,./agents/vera-veredicto.agent.md,luqz-inteligencia

@@ -1,0 +1,23 @@
+squad:
+  code: luqz-kommo
+  name: Squad Kommo — CRM & Conversão WhatsApp
+  description: Squad especialista em gestão de CRM, segmentação de leads e disparos de WhatsApp. Opera no Kommo para estruturar pipelines, segmentar bases inteligentemente e maximizar conversão em cada etapa do funil comercial. Garante que nenhum lead entre na base sem abordagem calibrada, nenhuma automação seja configurada sem processo validado, e nenhum disparo ocorra sem segmentação adequada.
+  icon: 📲
+  language: Português (Brasil)
+  type: functional
+
+agents:
+  - id: bruno-crm
+    name: Bruno CRM
+    icon: 📲
+    title: Especialista Kommo & Conversão WhatsApp
+    squad: luqz-kommo
+
+skills:
+  - web_fetch
+  - web_search
+
+data:
+  - pipeline/data/kommo-standards.md
+  - pipeline/data/whatsapp-boas-praticas.md
+  - pipeline/data/funil-benchmarks.md

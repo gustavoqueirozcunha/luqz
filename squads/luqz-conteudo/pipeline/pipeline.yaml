@@ -1,0 +1,55 @@
+pipeline:
+  name: Pipeline de Produção de Conteúdo
+  description: Do briefing ao layout final no Canva — carrosséis e posts padronizados e escaláveis.
+  version: "1.0"
+
+  steps:
+    - id: step-01-briefing-conteudo
+      name: Briefing de Conteúdo
+      type: checkpoint
+      file: steps/step-01-briefing-conteudo.md
+
+    - id: step-02-tema-objetivo
+      name: Tema e Objetivo Estratégico
+      type: agent
+      agent: estela-estrategia
+      execution: inline
+      file: steps/step-02-tema-objetivo.md
+
+    - id: step-03-estrutura-conteudo
+      name: Estrutura do Conteúdo
+      type: agent
+      agent: clara-copy
+      execution: inline
+      file: steps/step-03-estrutura-conteudo.md
+
+    - id: step-04-copy-slides
+      name: Copy Slide a Slide
+      type: agent
+      agent: clara-copy
+      execution: inline
+      file: steps/step-04-copy-slides.md
+
+    - id: step-05-direcao-visual
+      name: Direção Visual por Slide
+      type: agent
+      agent: rafael-roteiro
+      execution: inline
+      file: steps/step-05-direcao-visual.md
+
+    - id: step-06-layout-canva
+      name: Geração de Layout no Canva
+      type: agent
+      agent: designer-canva
+      execution: inline
+      file: steps/step-06-layout-canva.md
+
+    - id: step-07-revisao-final
+      name: Revisão Final e Memória
+      type: agent
+      agent: vera-veredicto
+      execution: inline
+      file: steps/step-07-revisao-final.md
+
+  checkpoints:
+    - step-01-briefing-conteudo

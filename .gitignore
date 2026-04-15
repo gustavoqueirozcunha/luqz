@@ -4,3 +4,6 @@ dist/
 build/
 .DS_Store
 .claude/settings.local.json
+
+# Configuracoes locais com credenciais e permissoes de sessao
+.claude/settings.json

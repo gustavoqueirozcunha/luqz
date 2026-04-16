@@ -7,6 +7,14 @@ squad: "luqz-gestor-projetos"
 execution: inline
 skills:
   - clickup-torre-uploader
+  - diagnosticar-projeto
+  - triar-tarefas
+  - detectar-riscos
+  - planejar-acoes
+  - reorganizar-projeto
+  - auditar-execucao
+  - alinhar-escopo
+  - prioridades-semana
 ---
 
 # Gestor de Projetos — LUQZ

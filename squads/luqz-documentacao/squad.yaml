@@ -1,0 +1,43 @@
+id: luqz-documentacao
+name: Squad Documentação
+type: utilitario
+description: >
+  Squad utilitário responsável por formatar e publicar documentos no ClickUp.
+  Qualquer entregável que precise ir para a Torre de Controle do Cliente
+  passa pelo Davi Docs antes da publicação final.
+
+agents:
+  - id: davi-docs
+    file: agents/davi-docs.agent.md
+    role: Especialista em Documentação ClickUp
+    triggers:
+      - Antes de qualquer publicação no ClickUp
+      - Quando conteúdo bruto precisa ser formatado para documento
+      - Quando um agente de outro squad precisa padronizar output para ClickUp
+
+integration:
+  mcp_required:
+    - clickup
+  calls_from:
+    - luqz-estrategia
+    - luqz-demanda
+    - luqz-inteligencia
+    - luqz-conteudo
+    - luqz-aquisicao-conversao
+    - luqz-kommo
+    - luqz-n8n
+    - claude-code (sessao principal)
+
+standards:
+  document_types:
+    - diagnostico
+    - reuniao
+    - handover
+    - brainstorm
+    - estrategia
+    - relatorio
+    - protocolo
+    - generico
+  page_width_default: 70
+  separator: "* * *"
+  footer: obrigatorio

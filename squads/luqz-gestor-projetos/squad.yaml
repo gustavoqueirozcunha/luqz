@@ -1,0 +1,62 @@
+squad:
+  code: luqz-gestor-projetos
+  name: "Gestor de Projetos — LUQZ"
+  icon: "📊"
+  description: >
+    Consultor estratégico e operacional de gestão de projetos.
+    Garante alinhamento de escopo, cronograma e eficiência operacional em todos os projetos da LUQZ Performance.
+    Atua no ClickUp e na estrutura local de clientes.
+  version: "1.0"
+  created: "2026-04-16"
+
+pipeline:
+  steps:
+    - id: load-client-context
+      agent: gestor
+      action: >
+        Carregar contexto completo do cliente na pasta local:
+        /clientes/[cliente]/
+        Identificar listas de tarefas e documentos locais.
+      checkpoint: false
+
+    - id: clickup-sync
+      agent: gestor
+      action: >
+        Sincronizar com o ClickUp do cliente.
+        Documento Torre de Controle: https://app.clickup.com/3030323/v/s/90131717523
+        Ler tarefas, status e comentários para o projeto em questão.
+      checkpoint: false
+
+    - id: diagnostic
+      agent: gestor
+      action: >
+        Realizar diagnóstico completo:
+        1. Comparar escopo vendido vs. tarefas existentes.
+        2. Identificar gargalos e riscos de atraso.
+        3. Avaliar % de avanço estimado.
+      checkpoint: false
+
+    - id: recommendations
+      agent: gestor
+      action: >
+        Gerar recomendações de ações:
+        - Sugerir criação/ajuste de tarefas no ClickUp.
+        - Definir prioridades para Gustavo.
+      checkpoint: true
+
+    - id: execution-and-notify
+      agent: gestor
+      action: >
+        Após aprovação do Gustavo:
+        1. Criar/Atualizar tarefas no ClickUp conforme validado.
+        2. Gerar mensagem de comunicação: Link da tarefa + direcionamento breve para o responsável.
+      checkpoint: false
+
+agents:
+  - id: gestor
+    file: agents/gestor.agent.md
+
+skills:
+  - web_search
+  - web_fetch
+  - clickup-torre-uploader

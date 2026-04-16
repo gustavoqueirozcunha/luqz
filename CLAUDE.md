@@ -128,7 +128,9 @@ Checklist detalhado: `clientes/[cliente]/contexto/qa-gate.md`
 | luqz-conteudo | Pipeline de carrosseis e posts organicos | Pipeline |
 | luqz-aquisicao-conversao | Pipeline completo de ativos de marketing | Pipeline |
 | luqz-kommo | CRM Kommo, segmentacao de leads e disparos WhatsApp | Funcional |
+| luqz-gestor-projetos | Gestão estratégica, PMO, alinhamento de escopo e ClickUp | Consultivo |
 | luqz-n8n | Automacoes e fluxos N8N | Funcional |
+| luqz-documentacao | Formatacao e publicacao de documentos no ClickUp | Utilitario |
 
 ### Regras de agentes
 
@@ -138,6 +140,7 @@ Checklist detalhado: `clientes/[cliente]/contexto/qa-gate.md`
 4. Pipelines sao sequenciais: step N nao executa sem output aprovado do step N-1.
 5. Vera Veredicto e a ultima trava — nenhum entregavel sai sem veredicto aprovado.
 6. Quando MCP/skill nao esta disponivel → reportar e aguardar. Nunca improvisar execucao.
+7. **Publicacao no ClickUp** → sempre passar pelo Davi Docs (luqz-documentacao) antes de publicar. Nenhum documento vai ao ClickUp sem formatacao padronizada. Definicao completa: `squads/luqz-documentacao/agents/davi-docs.agent.md`
 
 ### Execucao visual
 

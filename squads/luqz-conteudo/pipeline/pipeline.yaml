@@ -1,7 +1,7 @@
 pipeline:
   name: Pipeline de Produção de Conteúdo
   description: Do briefing ao layout final no Canva — carrosséis e posts padronizados e escaláveis.
-  version: "1.0"
+  version: "1.1"
 
   steps:
     - id: step-01-briefing-conteudo
@@ -13,8 +13,17 @@ pipeline:
       name: Tema e Objetivo Estratégico
       type: agent
       agent: estela-estrategia
+      canonical: squads/luqz-estrategia/agents/estela-estrategia.agent.md
       execution: inline
       file: steps/step-02-tema-objetivo.md
+
+    - id: step-02b-layout-carrossel
+      name: Layout de Carrossel
+      type: agent
+      agent: lucas-prototipo
+      execution: inline
+      condition: when_complex_carousel
+      file: steps/step-02b-layout-carrossel.md
 
     - id: step-03-estrutura-conteudo
       name: Estrutura do Conteúdo
@@ -40,7 +49,7 @@ pipeline:
     - id: step-06-layout-canva
       name: Geração de Layout no Canva
       type: agent
-      agent: designer-canva
+      agent: caetano-executor
       execution: inline
       file: steps/step-06-layout-canva.md
 
@@ -53,3 +62,15 @@ pipeline:
 
   checkpoints:
     - step-01-briefing-conteudo
+
+  conditions:
+    when_complex_carousel: >
+      Acionar step-02b apenas quando o carrossel tiver 7+ slides, narrativa
+      não-linear, ou quando o briefing indicar necessidade de aprovação da
+      estrutura visual antes do copy. Para posts simples (1–4 slides) ou
+      conteúdo com estrutura padrão, pular para step-03 diretamente.
+
+  notes:
+    agent_update: >
+      Step-06 agora usa Caetano Executor (squads/luqz-demanda/agents/caetano-executor.agent.md)
+      em vez de designer-canva. Mesmo agente, novo local canônico.

@@ -1,7 +1,7 @@
 pipeline:
   name: Pipeline de Produção LUQZ
   description: Do briefing do cliente ao pacote de ativos revisado e pronto para entrega.
-  version: "1.0"
+  version: "1.1"
 
   steps:
     - id: step-01-briefing-cliente
@@ -13,6 +13,7 @@ pipeline:
       name: Estratégia de Performance
       type: agent
       agent: estela-estrategia
+      canonical: squads/luqz-estrategia/agents/estela-estrategia.agent.md
       execution: inline
       file: steps/step-02-estrategia-performance.md
 
@@ -27,6 +28,14 @@ pipeline:
       agent: marcio-midia
       execution: inline
       file: steps/step-04-plano-midia.md
+
+    - id: step-04b-prototipagem-visual
+      name: Prototipagem Visual
+      type: agent
+      agent: lucas-prototipo
+      execution: inline
+      condition: when_landing_page
+      file: steps/step-04b-prototipagem-visual.md
 
     - id: step-05-copy-ativos
       name: Copy dos Ativos
@@ -58,3 +67,9 @@ pipeline:
     - step-01-briefing-cliente
     - step-03-aprovacao-estrategia
     - step-07-aprovacao-ativos
+
+  conditions:
+    when_landing_page: >
+      Acionar step-04b apenas quando o plano estratégico (step-02) incluir
+      landing page como ativo a produzir. Em outros casos (carrosseis, roteiros,
+      cópias de anúncio sem LP), pular diretamente para step-05.

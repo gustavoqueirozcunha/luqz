@@ -69,11 +69,16 @@ Conflito entre arquivos: maior prioridade prevalece. Nunca contradizer `diretriz
 1. CLAUDE.md      → esta constituicao
 2. PRODUTO        → Produtos/[produto]/
 3. CLIENTE        → clientes/[cliente]/contexto/ (5 arquivos)
-4. FASE           → localizar fase + trilha no cronograma
-5. VALIDAR        → esta entrega pertence a esta fase?
-6. EXECUTAR       → produzir com contexto completo
-7. QA GATE        → validar antes de entregar
+4. MEMORIA        → clientes/[cliente]/historico/memoria-cliente.md (se existir)
+5. FASE           → localizar fase + trilha no cronograma
+6. VALIDAR        → esta entrega pertence a esta fase?
+7. EXECUTAR       → produzir com contexto completo
+8. QA GATE        → validar antes de entregar
+9. ATUALIZAR      → registrar aprendizado em historico/memoria-cliente.md (se relevante)
 ```
+
+**Passo 4 obrigatorio:** Se `historico/memoria-cliente.md` existir, carregar ANTES de executar.
+Aprendizados acumulados parametrizam a entrega tanto quanto o contexto estatico.
 
 ### Orquestrar antes de executar
 
@@ -159,6 +164,8 @@ Checklist detalhado: `clientes/[cliente]/contexto/qa-gate.md`
 | web_search / web_fetch | Pesquisa e coleta de dados |
 | apify | Scraping estruturado |
 
+Catalogo completo com regras de selecao: `skills/MAPA-SKILLS.md`
+
 ---
 
 ## 6. Restricoes de seguranca
@@ -170,4 +177,15 @@ Checklist detalhado: `clientes/[cliente]/contexto/qa-gate.md`
 
 ---
 
-> CLAUDE.md — v2.0 | Sistema LUQZ | Abril 2026
+### Documentacao de referencia
+
+| Documento | Caminho | Uso |
+|-----------|---------|-----|
+| Arquitetura do sistema | `docs/segundo-cerebro-arquitetura.md` | Visao geral + fluxos operacionais |
+| Padrao de outputs | `docs/padrao-outputs.md` | Templates para 7 tipos de entrega |
+| Mapa de skills | `skills/MAPA-SKILLS.md` | Catalogo e regras de selecao |
+| Cerebro autoral | `Obsidian/` | Visao do usuario — nao misturar com outputs |
+
+---
+
+> CLAUDE.md — v2.1 | Sistema LUQZ | Abril 2026

@@ -1,0 +1,126 @@
+# Mapa de Skills — Sistema LUQZ
+
+> Índice centralizado. Antes de usar uma skill, consultar aqui.  
+> Regra: skill não listada aqui = skill não existe para o sistema.
+
+---
+
+## DECISÃO RÁPIDA
+
+```
+Preciso criar visual?
+  ├── MCP disponível + entrega final → canva
+  ├── Imagem 4K / sujeito consistente → nano-banana-2
+  └── Iteração rápida / exploração → image-ai-generator
+
+Preciso publicar?
+  ├── Instagram → instagram-publisher
+  ├── ClickUp → clickup-torre-uploader (via luqz-documentacao)
+  └── Email → resend
+
+Preciso de dados da web?
+  └── apify
+
+Preciso criar novo agente ou skill?
+  ├── Novo agente → opensquad-agent-creator
+  └── Nova skill → opensquad-skill-creator
+```
+
+---
+
+## CATÁLOGO POR CATEGORIA
+
+### DESIGN
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `canva` | `skills/canva/SKILL.md` | Entrega visual final, templates de cliente, carrosseis, stories | MCP |
+| `template-designer` | `skills/template-designer/SKILL.md` | Templates HTML customizados, landing pages, peças em código | AI |
+| `image-ai-generator` | `skills/image-ai-generator/SKILL.md` | Geração rápida para iteração, exploração visual, moodboard | AI |
+| `nano-banana-2` | `skills/nano-banana-2/SKILL.md` | Imagens 4K produção, consistência de sujeito, fundo transparente | Gemini |
+| `image-creator` | `skills/image-creator/SKILL.md` | Criação de imagens genéricas | AI |
+| `image-fetcher` | `skills/image-fetcher/SKILL.md` | Buscar e baixar referências visuais da web | Utility |
+
+**Hierarquia de uso (design):**
+1. `canva` — primeiro para entregas visuais (MCP disponível?)
+2. `nano-banana-2` — quando qualidade máxima ou consistência de sujeito
+3. `image-ai-generator` — quando velocidade importa mais que qualidade
+4. `template-designer` — quando precisa de HTML/código
+
+---
+
+### INTEGRAÇÕES
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `instagram-publisher` | `skills/instagram-publisher/SKILL.md` | Publicar posts/reels/stories aprovados no Instagram do cliente | Integration |
+| `kommo-crm-setup` | `skills/kommo-crm-setup/SKILL.md` | Setup inicial, configuração de funis, automações no Kommo | Integration |
+| `clickup-torre-uploader` | `skills/clickup-torre-uploader/SKILL.md` | Upload de documentos formatados no ClickUp | Integration |
+| `resend` | `skills/resend/SKILL.md` | Disparo de emails (relatórios, notificações, comunicados) | Email |
+
+**Regra crítica:** Publicação no ClickUp SEMPRE passa pelo `luqz-documentacao` antes de usar `clickup-torre-uploader`. Nunca acionar diretamente.
+
+---
+
+### DADOS
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `apify` | `skills/apify/SKILL.md` | Scraping de dados de concorrentes, referências, benchmarks | Scraping |
+| `blotato` | `skills/blotato/SKILL.md` | [verificar uso específico no SKILL.md] | Utility |
+
+---
+
+### GERAÇÃO DO SISTEMA
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `opensquad-agent-creator` | `skills/opensquad-agent-creator/SKILL.md` | Criar novo agente seguindo padrão .agent.md | Generator |
+| `opensquad-skill-creator` | `skills/opensquad-skill-creator/SKILL.md` | Criar nova skill com documentação YAML completa | Generator |
+
+---
+
+## PADRÃO DE CRIAÇÃO DE NOVA SKILL
+
+Toda skill nova segue esta estrutura obrigatória:
+
+```
+skills/[nome-kebab-case]/
+├── SKILL.md          ← documentação principal
+└── [outros arquivos se necessário]
+```
+
+Frontmatter obrigatório em `SKILL.md`:
+```yaml
+---
+name: [nome-da-skill]
+description: [Descrição em inglês]
+description_pt-BR: [Descrição em português]
+type: [mcp|api|generator|integration|utility]
+version: "1.0.0"
+categories: [lista de tags]
+---
+```
+
+Seções obrigatórias no corpo:
+- `## When to use` — casos de uso específicos
+- `## Instructions` — como usar passo a passo
+- `## Requirements` — dependências e pré-requisitos
+
+Usar `opensquad-skill-creator` para gerar automaticamente.
+
+---
+
+## SKILLS INDISPONÍVEIS / MCP NÃO CONECTADO
+
+Se uma skill MCP não estiver disponível na sessão:
+1. Reportar ao usuário: "Skill [nome] requer MCP [servidor] — não conectado"
+2. NÃO improvisar. NÃO simular.
+3. Aguardar instrução do usuário.
+
+Skills que requerem MCP ativo: `canva`  
+Skills que requerem credenciais configuradas: `instagram-publisher`, `kommo-crm-setup`, `clickup-torre-uploader`, `resend`
+
+---
+
+> skills/MAPA-SKILLS.md — v1.0 | Sistema LUQZ | Abril 2026

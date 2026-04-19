@@ -78,3 +78,29 @@ Toda e qualquer entrega deve obedecer obrigatoriamente aos seguintes pilares:
   - "Pronto em 5 minutos", "sem culpa", "sem esforço"
   - "Porção certa", "ingrediente certo", "do jeito que precisa ser"
   - "Do Dona Gê pra sua geladeira" — ancoragem de credibilidade
+  - Nome do ingrediente real: "Patinho", "Paleta", "Tilápia" — nunca apenas "carne magra"
+  - "Agora", "pronto", "freezer" — âncoras do diferencial logístico (disponibilidade imediata)
+
+---
+
+## 🧩 Fórmulas de Copy Validadas
+
+Estruturas que funcionam para o tom e a persona da LEVITÁ:
+
+**Situação real → produto como solução:**
+> "Chega do treino sem vontade de cozinhar. Abre o freezer."
+
+**Ingrediente específico → credibilidade:**
+> "Patinho. Arroz integral. Legumes. Você sabe o que está comendo."
+
+**Contexto da persona Ana → entendimento sem julgamento:**
+> "Quando a fome aparece de repente, você não precisa improvisar."
+
+**Diferencial logístico → disponibilidade:**
+> "Não precisa pedir com antecedência. Não precisa planejar. Só abrir o freezer."
+
+**Ancoragem de credibilidade:**
+> "Feito na cozinha do Dona Gê. Pronto no seu micro-ondas em 5 minutos."
+
+**Pergunta de conexão (CTA):**
+> "Seu freezer está pronto?"

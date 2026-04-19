@@ -98,3 +98,32 @@ Toda e qualquer entrega deve obedecer obrigatoriamente aos seguintes pilares:
 - **Motivação Central:** Praticidade pura — quer chegar em casa, ter uma comida boa, sem mercado, sem cozinha, sem delivery caro
 - **Nível de Consciência:** Consciente do problema (não come bem) mas sem urgência de resultado específico
 - **Nota:** Público com LTV menor — compra por conveniência, não por comprometimento com saúde. Atender, mas não é o foco de comunicação.
+
+---
+
+## 📊 Prioridade de Comunicação e Aquisição
+
+| Persona | Papel | Canal principal | Gatilho de compra |
+|---|---|---|---|
+| Ana (GLP-1) | **Prioritária** | Parceria com nutricionistas + orgânico | Indicação de profissional ou de outra usuária |
+| Rafael / Juliana | **Primária** | Conteúdo orgânico + anúncio processo | Processo de preparo + informação nutricional |
+| Carol (home office) | Secundária | Não focar — entra por consequência | Conveniência e disponibilidade imediata |
+
+---
+
+## ⚠️ O Que NUNCA Dizer — Por Persona
+
+### Para Ana (GLP-1)
+- Nunca mencionar nomes de medicamentos em criativos públicos
+- Nunca prometer emagrecimento
+- Nunca usar linguagem de dieta ou restrição
+- Falar por contexto e situação, não por diagnóstico
+
+### Para Rafael / Juliana (academia)
+- Nunca usar linguagem de panfleto de academia ("hiperproteico", "low carb" como manchete isolada)
+- Nunca prometer resultado físico — entregar praticidade de execução
+- Nunca tratar como iniciante — ela/ele já sabe o que precisa, só precisa de execução
+
+### Para todas as personas
+- Nunca chamar de "marmita fit" ou "marmita diet"
+- Nunca usar "saudável" como único argumento — todo concorrente usa

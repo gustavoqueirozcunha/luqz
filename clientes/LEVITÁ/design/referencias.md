@@ -9,10 +9,10 @@ Estes players definem o estado da arte de comunicação visual limpa, focada em 
 - [Apple](https://www.apple.com) (Espaço negativo como protagonista, produtos/elementos gigantes).
 
 ## 2. Perfis de Instagram de Excelência no Nicho
-*Insira aqui perfis de Instagram que traduzem a vibe ideal para a LEVITÁ.*
-- **Referência 1:** [Preencher — @perfil]
-- **Referência 2:** [Preencher — @perfil]
-- **Referência 3:** [Preencher — @perfil]
+
+- **Referência 1 — Nicho marmita saudável (operacional):** @healthlifecongelados — referência mapeada no briefing. Foco em processo real de produção como conteúdo. Modelo operacional a estudar (4.000 marmitas/mês, freezers em academias).
+- **Referência 2 — Influencer fitness para parceria:** Maju Murari — mapeada no briefing como potencial parceira para o lançamento. Avaliar perfil e audiência antes de contato.
+- **Referência 3 — A mapear:** Buscar perfil de nutricionista local de Franca-SP ou região com audiência alinhada à persona Ana (GLP-1) para parceria de indicação.
 
 ## 3. Direção Estética por Formato
 
@@ -28,6 +28,10 @@ Estes players definem o estado da arte de comunicação visual limpa, focada em 
 - **Foco:** Baixa fricção. Design *nativo*.
 - **Estilo:** Quando formos fabricar artes para stories, elas devem simular os widgets do Instagram (caixas arredondadas, tipografia nativa), para não parecer um "panfleto empurrado".
 
-### D. Para Anúncios (Meta / Google)
-- **Foco:** [Preencher — diretriz específica para criativos pagos da LEVITÁ]
-- **Estilo:** [Preencher]
+### D. Para Anúncios (Meta Ads)
+- **Foco:** Chegar na persona certa com a dor certa.
+  - Para Ana (GLP-1): contexto do tratamento — fome imprevisível, sem energia para cozinhar, precisa de algo confiável já pronto.
+  - Para Rafael/Juliana (academia): pós-treino sem energia, plano alimentar que não se sustenta na prática, marmita certa no dia mais difícil.
+- **Estilo:** Vídeo de processo (cozinha real, preparo visível) performa melhor que foto de produto para esse público. Legendas obrigatórias em vídeo. Primeiros 3 segundos devem mostrar a situação real da persona — não o produto.
+- **Regra crítica:** NUNCA mencionar nomes de medicamentos (Mounjaro, Ozempic) em criativos pagos. Comunicar por situação e contexto: "quando a fome aparece de repente", "sem apetite mas precisando comer", "fome que aparece na hora errada".
+- **O que NÃO usar em anúncio:** Banco de imagens, fundo branco genérico, copy genérica de "alimentação saudável". Especificidade de ingrediente e processo é o que converte.

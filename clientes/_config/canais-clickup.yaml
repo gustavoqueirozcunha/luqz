@@ -1,0 +1,75 @@
+# Mapeamento Cliente → Canal ClickUp
+# ============================================================
+# Este arquivo é a fonte de verdade para roteamento de notificações.
+# Editado manualmente sempre que um novo cliente for onboardado.
+#
+# Como encontrar o canal_id:
+#   1. Abra o ClickUp
+#   2. Acesse o espaço do cliente
+#   3. Clique no canal de chat desejado
+#   4. Copie o ID da URL: app.clickup.com/chat/[canal_id]
+#
+# Formato:
+#   "Nome Exato do Cliente":
+#     canal_id: "ID_DO_CANAL"
+#     espaco: "Nome do Espaço no ClickUp"  # informativo
+#     ativo: true
+#     notas: "Observações opcionais"
+# ============================================================
+
+clientes:
+
+  "Dr Cassio Goulart":
+    canal_id: "901317933833"
+    url: "https://app.clickup.com/3030323/v/cn/5-901317933833-8"
+    espaco: "Dr Cassio Goulart"
+    ativo: true
+    notas: "Canal principal de acompanhamento do projeto"
+
+  "Leve da Ge":
+    canal_id: "PREENCHER"
+    espaco: "Leve da Ge"
+    ativo: true
+    notas: ""
+
+  "LEVITÁ":
+    canal_id: "901317972841"
+    url: "https://app.clickup.com/3030323/v/cn/5-901317972841-8"
+    espaco: "LEVITÁ"
+    ativo: true
+    notas: ""
+
+  "Adriana Glamour Emporium":
+    canal_id: "PREENCHER"
+    espaco: "Adriana Glamour Emporium"
+    ativo: true
+    notas: ""
+
+  "Dr Marcelo Almeida":
+    canal_id: "PREENCHER"
+    espaco: "Dr Marcelo Almeida"
+    ativo: true
+    notas: ""
+
+  "LUQZ-Performance":
+    canal_id: "PREENCHER"
+    espaco: "LUQZ-Performance (interno)"
+    ativo: true
+    notas: "Canal interno de testes e entregas internas"
+
+# ============================================================
+# COMO ADICIONAR NOVO CLIENTE
+# ============================================================
+# 1. Copie o bloco de exemplo abaixo
+# 2. Substitua os valores
+# 3. Defina ativo: true
+# 4. Salve o arquivo
+#
+# Exemplo:
+#
+#   "Nome do Cliente":
+#     canal_id: "ID_OBTIDO_NO_CLICKUP"
+#     espaco: "Nome do Espaço"
+#     ativo: true
+#     notas: "Contexto adicional se necessário"
+# ============================================================

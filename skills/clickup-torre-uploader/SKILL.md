@@ -43,3 +43,11 @@ Mapeie os arquivos para as subpáginas da Torre:
 3. Limpe qualquer conteúdo temporário ou duplicado.
 4. Insira o conteúdo novo seguindo as regras de **Formatação Premium**.
 5. Finalize capturando um screenshot para validação visual.
+6. **Após upload bem-sucedido:** acionar o agente `kai-notificador` com os metadados da entrega:
+   - `cliente`: nome do cliente
+   - `tipo_entrega`: categoria do documento publicado
+   - `resumo`: o que foi feito (1-2 frases)
+   - `itens`: lista com nome e link de cada documento publicado
+   - `proximo_passo`: próxima ação esperada (se houver)
+
+> O Kai Notificador lê o canal correto em `clientes/_config/canais-clickup.yaml` e publica a atualização automaticamente.

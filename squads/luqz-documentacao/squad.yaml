@@ -15,7 +15,17 @@ agents:
       - Quando conteúdo bruto precisa ser formatado para documento
       - Quando um agente de outro squad precisa padronizar output para ClickUp
 
+  - id: kai-notificador
+    file: agents/kai-notificador.agent.md
+    role: Especialista em Comunicação Operacional de Entregas
+    triggers:
+      - Após publicação de documento ou tarefa na Torre de Controle do cliente
+      - Após execução de pipeline que gera entregáveis finais aprovados
+      - Quando agente chamador fornece metadados de entrega para notificar o cliente
+
 integration:
+  config:
+    canais_clickup: clientes/_config/canais-clickup.yaml
   mcp_required:
     - clickup
   calls_from:

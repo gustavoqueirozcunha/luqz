@@ -21,6 +21,12 @@ Preciso publicar?
 Preciso de dados da web?
   └── apify
 
+Preciso construir backend ou SaaS?
+  ├── Criar API do zero → fastify-api-builder
+  ├── Debug Supabase (auth, RLS, schema) → supabase-setup-debug
+  ├── Planejar MVP SaaS → saas-mvp-planner
+  └── Conectar frontend à API → frontend-api-connector
+
 Preciso criar novo agente ou skill?
   ├── Novo agente → opensquad-agent-creator
   └── Nova skill → opensquad-skill-creator
@@ -59,6 +65,17 @@ Preciso criar novo agente ou skill?
 | `resend` | `skills/resend/SKILL.md` | Disparo de emails (relatórios, notificações, comunicados) | Email |
 
 **Regra crítica:** Publicação no ClickUp SEMPRE passa pelo `luqz-documentacao` antes de usar `clickup-torre-uploader`. Nunca acionar diretamente.
+
+---
+
+### BACKEND & SAAS
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `fastify-api-builder` | `skills/fastify-api-builder/SKILL.md` | Criar API REST Node.js com Fastify 5 + Supabase + JWT do zero | Prompt |
+| `supabase-setup-debug` | `skills/supabase-setup-debug/SKILL.md` | Configurar Supabase (schema, auth, RLS) e depurar erros de integração | Prompt |
+| `saas-mvp-planner` | `skills/saas-mvp-planner/SKILL.md` | Evoluir sistema legado (planilhas/webhooks) para SaaS com auth e API | Prompt |
+| `frontend-api-connector` | `skills/frontend-api-connector/SKILL.md` | Conectar React/Vite a API REST com JWT — auth hook, route guard, cliente HTTP | Prompt |
 
 ---
 

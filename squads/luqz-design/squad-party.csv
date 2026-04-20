@@ -1,2 +1,5 @@
-agent_id,agent_name,role
-designer,LUQZ Designer,Diretor de Arte responsável por transformar briefs em artes estáticas de alto padrão premium
+id,name,title,icon,role,skills,integrations
+leo-creative-director,Leo Creative Director,Diretor Criativo,🎯,"Conceito visual, sistema de design, Visual Brief","web_search,web_fetch","input: Estela + Clara; output: Ivo"
+ivo-visual-prompter,Ivo Visual Prompter,Prompt Engineer Visual,⚡,"Engenharia de prompts, geração de assets","claude-design,nano-banana-2,image-ai-generator","input: Leo; output: Caetano"
+caetano-layout,Caetano Layout,Executor de Layout,🏗️,"Montagem final no Canva com assets gerados",canva,"input: Ivo + Leo; output: Nina"
+nina-qa-visual,Nina QA Visual,Revisora Visual,🔍,"QA visual: consistência, hierarquia, brand, legibilidade",none,"input: Caetano; output: Vera ou Caetano"

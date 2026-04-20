@@ -1,0 +1,150 @@
+pipeline:
+  id: luqz-design-pipeline
+  name: Pipeline de Produção Visual
+  version: "2.0"
+  motor: claude-design
+  execucao: sequencial  # step N não executa sem output aprovado de step N-1
+
+steps:
+
+  - id: briefing-entrada
+    ordem: 1
+    nome: "Briefing de Entrada"
+    agente: leo-creative-director
+    tipo: checkpoint
+    inputs:
+      obrigatorios:
+        - "Estratégia aprovada (Estela) — fase, objetivo, ICP"
+        - "Copy final aprovado (Clara) — texto exato de todos os assets"
+        - "clientes/[cliente]/contexto/diretrizes.md"
+        - "clientes/[cliente]/contexto/tom-de-voz.md"
+      opcionais:
+        - "clientes/[cliente]/design/sistema-visual.md"
+        - "clientes/[cliente]/historico/memoria-cliente.md"
+    outputs: []
+    checkpoint: true
+    bloqueio: "Sem copy aprovado → parar e reportar"
+
+  - id: conceito-visual
+    ordem: 2
+    nome: "Conceito e Sistema Visual"
+    agente: leo-creative-director
+    tipo: execucao
+    inputs:
+      - "Output do step 1 (briefing completo)"
+    outputs:
+      - "Sistema visual completo (paleta, tipografia, mood)"
+      - "Visual Brief por asset (conceito, hierarquia, instrução para Ivo)"
+    checkpoint: true
+    bloqueio: "Visual Brief incompleto → Leo refaz internamente antes de passar"
+
+  - id: prompt-engineering
+    ordem: 3
+    nome: "Engenharia de Prompts"
+    agente: ivo-visual-prompter
+    tipo: execucao
+    inputs:
+      - "Visual Brief aprovado (Leo)"
+    outputs:
+      - "Prompt Sheet completo (Claude Design ou nano-banana-2)"
+      - "1 imagem de teste do asset principal"
+    ferramenta_padrao: claude-design
+    arvore_decisao:
+      sujeito_consistente: nano-banana-2
+      fundo_transparente: nano-banana-2
+      teste_conceito: image-ai-generator
+      default: claude-design
+    checkpoint: false
+    nota: "Testar 1 imagem antes de gerar lote. Se não convergir em 2 tentativas → escalar para Leo"
+
+  - id: geracao-assets
+    ordem: 4
+    nome: "Geração de Assets"
+    agente: ivo-visual-prompter
+    tipo: execucao
+    inputs:
+      - "Prompt Sheet validado (step 3)"
+    outputs:
+      - "Todos os assets gerados em PNG"
+      - "Naming: [cliente]-[tipo]-[formato]-v[N].png"
+    checkpoint: false
+
+  - id: montagem-layout
+    ordem: 5
+    nome: "Montagem de Layout no Canva"
+    agente: caetano-layout
+    tipo: execucao
+    inputs:
+      - "Assets gerados por Ivo (PNG)"
+      - "Visual Brief de Leo (especificações técnicas)"
+    outputs:
+      - "Layouts finais no Canva"
+      - "Export PNG (entrega) + PDF (apresentação)"
+    modos:
+      modo_1: "Instrução detalhada (MCP indisponível)"
+      modo_2: "Execução direta via Canva MCP (preferencial)"
+    checkpoint: false
+
+  - id: qa-visual
+    ordem: 6
+    nome: "QA Visual"
+    agente: nina-qa-visual
+    tipo: validacao
+    inputs:
+      - "Layouts finais (Caetano)"
+      - "Visual Brief original (Leo) — para comparação"
+    outputs:
+      - "Veredicto: APROVADO ou REPROVADO"
+      - "Lista de correções (se reprovado)"
+    checkpoint: true
+    bloqueio: "REPROVADO → retorna para Caetano. Nunca avança com reprovação."
+    protocolo_retrabalho:
+      tentativa_1: "Caetano corrige → Nina revisa"
+      tentativa_2: "Escalar para Leo (problema no Brief?)"
+      tentativa_3: "Sessão de alinhamento Leo + Ivo + Caetano"
+
+  - id: entrega
+    ordem: 7
+    nome: "Entrega e Memória"
+    agente: leo-creative-director
+    tipo: entrega
+    inputs:
+      - "Assets aprovados por Nina"
+    outputs:
+      - "Pacote de entrega organizado"
+      - "Atualização de /clientes/[cliente]/design/sistema-visual.md"
+      - "Atualização de _memory/memories.md"
+    downstream:
+      - "luqz-inteligencia (Vera — QA de negócio)"
+      - "luqz-documentacao (Davi Docs — publicação ClickUp)"
+    checkpoint: false
+
+naming_convention:
+  padrao: "[cliente]-[tipo]-[formato]-v[N].ext"
+  exemplos:
+    - "acai-capa-carousel-ig-v1.png"
+    - "acai-slide3-carousel-ig-v1.png"
+    - "acai-stories-cover-v2.png"
+    - "acai-feed-static-v1.pdf"
+  tipos_validos:
+    - capa
+    - slide[N]
+    - stories
+    - feed
+    - thumb
+    - banner
+  formatos_validos:
+    - carousel-ig
+    - stories-ig
+    - feed-ig
+    - reels-cover
+    - banner-meta
+
+padroes_visuais:
+  cores_maximas: 5
+  gradiente: "linear apenas (radial proibido)"
+  peso_tipografico_minimo: 500
+  contraste_minimo: "WCAG AA (4.5:1)"
+  overlay_sobre_foto: "mínimo 60% opacidade"
+  templates_por_carrossel: 1
+  elementos_por_slide: "máximo 5"

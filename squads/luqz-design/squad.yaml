@@ -2,66 +2,56 @@ squad:
   code: luqz-design
   name: LUQZ Design Squad
   icon: 🎨
+  version: "2.0"
+  updated: "2026-04-20"
   description: >
-    Squad de design da LUQZ Performance. Transforma briefs estratégicos
-    em artes estáticas de alto padrão visual, focadas em percepção premium
-    e conversão. Opera como diretor de arte autônomo.
-  version: "1.0"
-  created: "2026-04-13"
+    Pipeline profissional de criação visual para SaaS e agência.
+    Motor principal: Claude Design. Motor de imagem 4K: nano-banana-2.
+    Execução final: Canva MCP. QA visual dedicado antes de Vera.
 
-pipeline:
-  steps:
-    - id: load-context
-      agent: designer
-      action: >
-        Carregar contexto completo do cliente:
-        /clientes/[cliente]/contexto/ (diretrizes, oferta, persona, tom-de-voz, cliente)
-        /clientes/[cliente]/design/ (direcao-visual, sistema-visual, referencias)
-      checkpoint: false
-
-    - id: load-brief
-      agent: designer
-      action: >
-        Carregar o briefing da semana:
-        /clientes/[cliente]/M1/Roteiros_Semana[X].md
-        Identificar todos os conteúdos que precisam de arte (carrosséis e covers de reels).
-      checkpoint: false
-
-    - id: reference-scan
-      agent: designer
-      action: >
-        Buscar mentalmente referências visuais reais de alto nível.
-        Identificar padrões visuais dessas referências.
-        Adaptar ao contexto do brief. Criar algo original.
-      checkpoint: false
-
-    - id: create-art-direction
-      agent: designer
-      action: >
-        Para cada conteúdo, entregar:
-        1. Conceito (1 linha)
-        2. Referência criativa (estilo + inspiração)
-        3. Direção visual (cores, tipografia, estilo)
-        4. Estrutura da arte (headline, subheadline, elementos, organização)
-        5. Layout descritivo (pronto pra Canva)
-        6. Variações (2)
-      checkpoint: true
-
-    - id: design-prompt-engineering
-      agent: designer
-      action: >
-        Transformar o layout descritivo em um "Blueprint de Produção" técnico.
-        O blueprint deve conter códigos hexadecimais, nomes de fontes,
-        pesos tipográficos e coordenadas de posicionamento para o squad de execução.
-      checkpoint: false
-
-    - id: generate-assets
-      agent: designer
-      action: >
-        Gerar as imagens finais das artes usando ferramenta de geração
-        de imagem, seguindo rigorosamente a direção visual aprovada.
-      checkpoint: true
+  motor_principal: claude-design
+  postura: sistema de produção — não designer freelancer
 
 agents:
-  - id: designer
-    file: agents/designer.agent.md
+  - id: leo-creative-director
+    file: agents/leo-creative-director.agent.md
+    role: "Diretor Criativo — conceito, sistema visual, briefing técnico"
+
+  - id: ivo-visual-prompter
+    file: agents/ivo-visual-prompter.agent.md
+    role: "Prompt Engineer Visual — traduz direção em prompts Claude Design / nano-banana-2"
+
+  - id: caetano-layout
+    file: agents/caetano-layout.agent.md
+    role: "Layout Executor — montagem final no Canva com assets gerados"
+
+  - id: nina-qa-visual
+    file: agents/nina-qa-visual.agent.md
+    role: "QA Visual — valida consistência, hierarquia e padrão de marca"
+
+pipeline:
+  file: pipeline/pipeline.yaml
+  steps:
+    - briefing-entrada
+    - conceito-visual
+    - prompt-engineering
+    - geracao-assets
+    - montagem-layout
+    - qa-visual
+    - entrega
+
+integration:
+  upstream:
+    - luqz-estrategia   # Estela entrega estratégia e fase
+    - luqz-demanda      # Clara entrega copy final aprovado
+  downstream:
+    - luqz-inteligencia # Vera veredicto final de negócio
+    - luqz-documentacao # Davi publica no ClickUp
+
+rules:
+  - Claude Design é o motor padrão de geração visual
+  - nano-banana-2 apenas para sujeitos consistentes (pessoas reais, 4K, transparência)
+  - image-ai-generator apenas para testes de conceito (nunca entrega final)
+  - Canva é ferramenta de composição — não de geração
+  - Nenhum asset sai do squad sem Nina aprovar
+  - Nenhum entregável vai ao ClickUp sem Davi Docs

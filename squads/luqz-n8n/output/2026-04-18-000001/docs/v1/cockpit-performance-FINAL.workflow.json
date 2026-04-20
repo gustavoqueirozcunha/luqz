@@ -1,0 +1,143 @@
+{
+  "name": "Cockpit Performance — API de Métricas (v2)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "cockpit/performance",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "node-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "cockpit-performance"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1_QWyiWeHVsh3tdef5JrmobSmNLVlrnQqs0zhQ9S6Usg",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=170409107",
+          "mode": "id"
+        },
+        "options": {
+          "headerRow": 1
+        }
+      },
+      "id": "node-sheets",
+      "name": "Google Sheets — Ler Dados",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [460, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SUBSTITUIR_PELA_CREDENTIAL_ID",
+          "name": "Google Sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "javaScript",
+        "jsCode": "const gestor = $('Webhook').first().json.query?.gestor || null;\n\nif (!$input.all() || $input.all().length === 0) {\n  throw new Error('Google Sheets retornou 0 linhas — planilha vazia ou inacessível');\n}\n\nfunction parseBRL(value) {\n  if (value === null || value === undefined || value === '') return 0;\n  const str = String(value)\n    .replace(/R\\$\\s*/g, '')\n    .replace(/\\./g, '')\n    .replace(',', '.')\n    .trim();\n  const num = parseFloat(str);\n  return isNaN(num) ? 0 : num;\n}\n\nconst normalized = $input.all()\n  .map(item => {\n    const r = item.json;\n    return {\n      cliente:      String(r['Cliente'] ?? '').trim(),\n      gestor:       String(r['Gestor'] ?? r['gestor'] ?? '').trim(),\n      investimento: parseBRL(r['Total de Investimento']),\n      leads:        parseBRL(r['Total de RESULTADOS (Gerenciador)']),\n      metaCPA:      parseBRL(r['Meta de CPA']),\n    };\n  })\n  .filter(r => r.cliente !== '');\n\nconst filtered = gestor\n  ? normalized.filter(r => r.gestor.toLowerCase() === gestor.toLowerCase())\n  : normalized;\n\nreturn filtered.map(r => ({ json: r }));"
+      },
+      "id": "node-normalize",
+      "name": "Function — Normalizar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "language": "javaScript",
+        "jsCode": "// ── CACHE (TTL 2 min) ─────────────────────────────────────\nconst cache = $getWorkflowStaticData('global');\nconst CACHE_TTL = 120_000;\n\nif (cache.payload && (Date.now() - cache.ts) < CACHE_TTL) {\n  return [{ json: { ...cache.payload, fromCache: true } }];\n}\n// ──────────────────────────────────────────────────────────\n\nconst rows = $input.all().map(i => i.json);\nconst gestorFiltro = $('Webhook').first().json.query?.gestor || null;\n\nconst map = {};\nfor (const row of rows) {\n  if (!map[row.cliente]) {\n    map[row.cliente] = { cliente: row.cliente, investimento: 0, leads: 0, metaCPA: 0, _metaCount: 0 };\n  }\n  map[row.cliente].investimento += row.investimento;\n  map[row.cliente].leads        += row.leads;\n  if (row.metaCPA > 0) {\n    map[row.cliente].metaCPA   += row.metaCPA;\n    map[row.cliente]._metaCount++;\n  }\n}\n\nconst resultado = Object.values(map).map(c => {\n  const metaCPA = c._metaCount > 0 ? c.metaCPA / c._metaCount : 0;\n\n  if (c.leads === 0) {\n    return { cliente: c.cliente, leads: 0, cpl: 0, status: 'sem-dados' };\n  }\n\n  const cpl = parseFloat((c.investimento / c.leads).toFixed(2));\n\n  let status = 'verde';\n  if (metaCPA > 0) {\n    if (cpl > metaCPA)            status = 'vermelho';\n    else if (cpl > metaCPA * 0.8) status = 'amarelo';\n  }\n\n  return { cliente: c.cliente, leads: c.leads, cpl, status };\n});\n\nconst ordem = { vermelho: 0, amarelo: 1, verde: 2, 'sem-dados': 3 };\nresultado.sort((a, b) => (ordem[a.status] ?? 9) - (ordem[b.status] ?? 9));\n\nif (gestorFiltro && resultado.length === 0) {\n  return [{ json: {\n    status: 'ok', totalClientes: 0, data: [],\n    aviso: `Nenhum cliente encontrado para o gestor \"${gestorFiltro}\". Verifique o nome na planilha.`,\n    geradoEm: new Date().toISOString(), fromCache: false\n  }}];\n}\n\nconst payload = {\n  status: 'ok',\n  totalClientes: resultado.length,\n  data: resultado,\n  geradoEm: new Date().toISOString(),\n  fromCache: false,\n};\n\ncache.ts = Date.now();\ncache.payload = payload;\n\nreturn [{ json: payload }];"
+      },
+      "id": "node-aggregate",
+      "name": "Function — Agregar e Calcular",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Content-Type",                "value": "application/json" },
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Cache-Control",               "value": "public, max-age=120" }
+            ]
+          },
+          "responseCode": 200
+        }
+      },
+      "id": "node-response",
+      "name": "HTTP Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"status\":\"error\",\"message\":\"Falha ao carregar dados. Tente novamente em instantes.\",\"timestamp\":\"{{ $now.toISO() }}\"}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Content-Type", "value": "application/json" }
+            ]
+          },
+          "responseCode": 500
+        }
+      },
+      "id": "node-error-response",
+      "name": "HTTP Response — Erro",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 520],
+      "notes": "Conectar ao Error Trigger do workflow"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [{ "node": "Google Sheets — Ler Dados", "type": "main", "index": 0 }]
+      ]
+    },
+    "Google Sheets — Ler Dados": {
+      "main": [
+        [{ "node": "Function — Normalizar", "type": "main", "index": 0 }]
+      ]
+    },
+    "Function — Normalizar": {
+      "main": [
+        [{ "node": "Function — Agregar e Calcular", "type": "main", "index": 0 }]
+      ]
+    },
+    "Function — Agregar e Calcular": {
+      "main": [
+        [{ "node": "HTTP Response", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "tags": ["cockpit", "performance", "api", "v2"],
+  "triggerCount": 1,
+  "updatedAt": "2026-04-18T00:00:00.000Z",
+  "versionId": "2"
+}

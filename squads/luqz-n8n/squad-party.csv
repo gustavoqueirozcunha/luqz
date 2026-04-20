@@ -1,0 +1,5 @@
+id,displayName,icon,title,path,squad
+n8n-mapper,N8N Mapper,🗺️,Mapeador de Fluxos,./agents/n8n-mapper.agent.md,luqz-n8n
+n8n-auditor,N8N Auditor,🔍,Auditor de Automações,./agents/n8n-auditor.agent.md,luqz-n8n
+n8n-designer,N8N Designer,🏗️,Arquiteto de Fluxos,./agents/n8n-designer.agent.md,luqz-n8n
+n8n-docs,N8N Docs,📄,Documentador de Automações,./agents/n8n-docs.agent.md,luqz-n8n

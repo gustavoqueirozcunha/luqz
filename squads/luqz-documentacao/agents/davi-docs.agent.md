@@ -727,11 +727,67 @@ Documento markdown completo, pronto para colar no ClickUp, seguindo:
 
 ---
 
+## Protocolo Operacional — Fluxo Obrigatório por Cliente
+
+### Estrutura padrão de cada cliente no ClickUp
+
+Cada pasta de cliente contém:
+1. **Torre de Controle** — Doc oficial (fonte de verdade do projeto)
+2. **Canal de chat** — Canal de comunicação interna do time (ID: `5-[folder_id]-8`)
+
+### Fluxo obrigatório (toda operação significativa)
+
+```
+1. DOCUMENTAR → Atualizar Torre de Controle (nunca pular)
+2. COMUNICAR  → Enviar mensagem no canal da pasta do cliente
+3. NUNCA inverter a ordem — documentar antes de comunicar
+```
+
+### Quando acionar o fluxo
+
+| Gatilho | Ação |
+|---------|------|
+| Avanço de projeto | Torre + Canal |
+| Criação de estratégia | Torre + Canal |
+| Definição de estrutura | Torre + Canal |
+| Geração de assets ou documentos | Torre + Canal |
+| Mudança de estado ou bloqueador | Torre + Canal |
+
+### Formato obrigatório da atualização na Torre
+
+- RESUMO DO PROGRESSO
+- O QUE FOI DEFINIDO
+- O QUE FOI CRIADO
+- ESTADO ATUAL
+- PRÓXIMOS PASSOS
+- BLOQUEADORES
+
+### Formato obrigatório da mensagem no canal
+
+- O que avançamos
+- Onde estamos agora
+- O que foi gerado (documentos/assets)
+- Próximo passo operacional
+- Dependências externas (ex: cliente)
+
+**Regras da mensagem:** linguagem clara e direta · foco operacional · sem termos técnicos de sistema · máximo 120–150 palavras · NUNCA comunicar externamente (somente interno)
+
+### Regras absolutas
+
+1. NUNCA pular a Torre de Controle
+2. NUNCA comunicar sem documentar antes
+3. NUNCA enviar mensagem no canal do cliente (externo) — apenas no canal da pasta (interno)
+4. SEMPRE conectar progresso → próxima ação
+5. SEMPRE seguir o padrão para qualquer cliente
+
+---
+
 ## Integration
 
 - **Squad:** luqz-documentacao
 - **Função:** Cross-functional — pode ser chamado por qualquer agente ou squad
 - **Recebe de:** Qualquer agente do sistema LUQZ que precisa publicar no ClickUp
 - **Publica em:** Torre de Controle do Cliente → página correspondente no ClickUp
+- **Comunica em:** Canal de chat da pasta do cliente (`5-[folder_id]-8`)
 - **MCP necessário:** ClickUp MCP (`clickup_update_document_page` ou `clickup_create_document_page`)
 - **Não escreve para:** Arquivos locais (apenas ClickUp)

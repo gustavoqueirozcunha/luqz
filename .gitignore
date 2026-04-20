@@ -1,9 +1,37 @@
+# Dependências
 node_modules/
-.env
+**/node_modules/
+
+# Build
 dist/
 build/
-.DS_Store
-.claude/settings.local.json
+**/dist/
+**/build/
 
-# Configuracoes locais com credenciais e permissoes de sessao
+# Vite
+*.local
+
+# Env — nunca versionar
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Claude
+.claude/settings.local.json
 .claude/settings.json

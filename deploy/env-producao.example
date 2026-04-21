@@ -1,0 +1,11 @@
+# Copiar para /var/www/luqz/luqz-api/.env na VPS
+# Nunca commitar este arquivo com valores reais
+
+SUPABASE_URL=https://SEU_PROJECT_ID.supabase.co
+SUPABASE_SERVICE_KEY=sb_secret_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+JWT_SECRET=luqz-secret-2026
+PORT=3005
+INTERNAL_SECRET=luqz-internal-magic-2026
+N8N_SECRET=n8n-auth-secret-2026
+N8N_WEBHOOK_URL=https://editor.luqz.com.br/webhook/cockpit/performance
+N8N_CACHE_TTL_MS=120000

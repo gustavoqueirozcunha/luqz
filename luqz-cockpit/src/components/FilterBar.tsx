@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { CockpitFiltros, StatusCor, TipoFunil } from "@/types/cockpit";
+import type { CockpitFiltros, StatusInteligencia, TipoFunil } from "@/types/cockpit";
 
 interface Props {
   filtros:  CockpitFiltros;
@@ -42,13 +42,13 @@ export function FilterBar({ filtros, onChange }: Props) {
       </select>
       <select
         value={filtros.status}
-        onChange={(e) => onChange({ status: e.target.value as StatusCor | "todos" })}
+        onChange={(e) => onChange({ status: e.target.value as StatusInteligencia | "todos" })}
         style={SELECT}
       >
         <option value="todos">Todos os status</option>
-        <option value="verde">Verde</option>
-        <option value="amarelo">Atenção</option>
-        <option value="vermelho">Crítico</option>
+        <option value="saudavel">Saudável</option>
+        <option value="atencao">Atenção</option>
+        <option value="critico">Crítico</option>
       </select>
     </div>
   );

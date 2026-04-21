@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import type { ClientePerformance, NomeKpi } from "@/types/cockpit";
+import type { ClientePerformance } from "@/types/cockpit";
 import { StatusPill } from "@/components/StatusPill";
 import { SkeletonCard } from "@/components/Skeleton";
 import { EmptyState, ErrorState } from "@/components/EmptyState";
+import { calculateKPIStatus } from "@/services/performanceService";
 
 interface Props {
   data:     ClientePerformance[];
@@ -12,11 +13,20 @@ interface Props {
   onSelect: (c: ClientePerformance) => void;
 }
 
-const FUNIS: { kpi: NomeKpi; rotulo: string }[] = [
+const FUNIS: { kpi: string; rotulo: string }[] = [
   { kpi: "CPL", rotulo: "Leads"      },
   { kpi: "CPS", rotulo: "Seguidores" },
   { kpi: "CAC", rotulo: "Vendas"     },
+  { kpi: "CPV", rotulo: "Visualizações" },
 ];
+
+const TIPO_LABEL: Record<string, string> = {
+  captacao:    "Captação",
+  crescimento: "Crescimento",
+  vendas:      "Vendas",
+  engajamento: "Engajamento",
+};
+
 
 function KpiCard({ label, value, accent }: { label: string; value: string | number; accent?: string }) {
   return (
@@ -40,18 +50,19 @@ function KpiCard({ label, value, accent }: { label: string; value: string | numb
 
 export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
   const stats = useMemo(() => {
-    const criticos  = data.filter((d) => d.status === "vermelho").length;
-    const atencao   = data.filter((d) => d.status === "amarelo").length;
-    const saudaveis = data.filter((d) => d.status === "verde").length;
+    const criticos  = data.filter((d) => d.status === "critico").length;
+    const atencao   = data.filter((d) => d.status === "atencao").length;
+    const saudaveis = data.filter((d) => d.status === "saudavel").length;
 
-    const grupos: Record<NomeKpi, { resultados: number; investimento: number; count: number }> = {
+    const grupos: Record<string, { resultados: number; investimento: number; count: number }> = {
       CPL: { resultados: 0, investimento: 0, count: 0 },
       CPS: { resultados: 0, investimento: 0, count: 0 },
       CAC: { resultados: 0, investimento: 0, count: 0 },
+      CPV: { resultados: 0, investimento: 0, count: 0 },
     };
 
     for (const d of data) {
-      const kpi = d.nomeKpi;
+      const kpi = d.kpis.principal.nome;
       if (!(kpi in grupos)) continue;
       grupos[kpi].resultados   += d.resultados ?? 0;
       grupos[kpi].investimento += d.investimento ?? 0;
@@ -64,7 +75,7 @@ export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
   const ranking = useMemo(
     () =>
       [...data].sort((a, b) => {
-        const o = { vermelho: 0, amarelo: 1, verde: 2 } as const;
+        const o = { critico: 0, atencao: 1, saudavel: 2 } as const;
         return o[a.status] - o[b.status];
       }),
     [data]
@@ -116,12 +127,12 @@ export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
               </p>
               <p style={{ fontSize: 22, fontWeight: 700, color: "#e0e0e0" }}>
                 {custoMedio !== null
-                  ? `R$ ${custoMedio.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`
+                  ? `R$ ${custoMedio.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                   : "—"}
               </p>
               <p style={{ fontSize: 11, color: "#777", marginTop: 6 }}>
-                {g.resultados.toLocaleString("pt-BR")} {rotulo.toLowerCase()} ·{" "}
-                R$ {g.investimento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                {g.resultados.toLocaleString("pt-BR")} {rotulo.toLowerCase()} ·{"向"}
+                R$ {g.investimento.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>
           );
@@ -154,19 +165,48 @@ export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div>
                   <p style={{ fontSize: 13, fontWeight: 600, color: "#e0e0e0" }}>{c.cliente}</p>
-                  <p style={{ fontSize: 11, color: "#666", marginTop: 2 }}>{c.funil}</p>
+                  <p style={{ fontSize: 11, color: "#666", marginTop: 2 }}>
+                    {c.funil} {c.tipoFunil ? `· ${TIPO_LABEL[c.tipoFunil] ?? c.tipoFunil}` : ""}
+                  </p>
                 </div>
                 <StatusPill status={c.status} />
               </div>
               <div style={{ display: "flex", gap: 16 }}>
                 <div>
-                  <p style={{ fontSize: 10, color: "#555570" }}>{c.nomeKpi}</p>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: "#ccc" }}>
-                    R$ {(c.kpi ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-                  </p>
+                  {(() => {
+                    const { status, label } = calculateKPIStatus({
+                      value: c.kpis.principal.valorAtual ?? 0,
+                      target: c.kpis.principal.meta ?? 0,
+                      direction: "lower_is_better",
+                    });
+                    const statusColor =
+                      status === "good" ? "#00c37a" :
+                      status === "warning" ? "#f5a623" :
+                      status === "critical" ? "#f04b4b" : "#666";
+                    return (
+                      <>
+                        <p style={{ fontSize: 10, color: "#555570" }}>{c.kpis.principal.nome} atual</p>
+                        <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+                          <p style={{ fontSize: 15, fontWeight: 700, color: "#ccc" }}>
+                            R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </p>
+                          {status !== "no_target" && (
+                            <span style={{ fontSize: 10, fontWeight: 600, color: statusColor }}>
+                              {label}
+                            </span>
+                          )}
+                        </div>
+                        <p style={{ fontSize: 10, color: "#444460", marginTop: 2 }}>
+                          Meta: R$ {(c.kpis.principal.meta ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        </p>
+                      </>
+                    );
+                  })()}
                 </div>
                 <div>
-                  <p style={{ fontSize: 10, color: "#555570" }}>Leads</p>
+                  <p style={{ fontSize: 10, color: "#555570" }}>
+                    {FUNIS.find(f => f.kpi === c.kpis.principal.nome)?.rotulo || "Resultados"}
+                  </p>
                   <p style={{ fontSize: 15, fontWeight: 700, color: "#ccc" }}>{c.resultados ?? 0}</p>
                 </div>
               </div>

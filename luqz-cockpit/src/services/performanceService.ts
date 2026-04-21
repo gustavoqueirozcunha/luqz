@@ -1,5 +1,46 @@
 import type { CockpitAuth, PerformanceResponse } from "@/types/cockpit";
 
+// ── KPI variance calculation ─────────────────────────────────────────────
+
+export type KPI = {
+  value: number;
+  target: number;
+  direction: "lower_is_better" | "higher_is_better";
+};
+
+export type KPIStatusResult = {
+  variance: number | null;
+  status: "good" | "neutral" | "warning" | "critical" | "no_target";
+  label: string;
+};
+
+export function calculateKPIStatus(kpi: KPI): KPIStatusResult {
+  const { value, target, direction } = kpi;
+
+  if (!target || target === 0) {
+    return { variance: null, status: "no_target", label: "Sem meta" };
+  }
+
+  let variance = (value - target) / target;
+
+  if (direction === "higher_is_better") {
+    variance = variance * -1;
+  }
+
+  let status: KPIStatusResult["status"] = "neutral";
+  if (variance <= -0.1) status = "good";
+  else if (variance > 0.1 && variance <= 0.3) status = "warning";
+  else if (variance > 0.3) status = "critical";
+
+  const percent = Math.round(variance * 100);
+  const label =
+    variance > 0
+      ? `+${percent}% acima da meta`
+      : `${percent}% abaixo da meta`;
+
+  return { variance, status, label };
+}
+
 const API_URL  = "https://editor.luqz.com.br/webhook/cockpit/performance";
 const CACHE_TTL = 120_000;
 

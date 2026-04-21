@@ -12,14 +12,14 @@ interface Props {
   onSelect: (c: ClientePerformance) => void;
 }
 
-const PRIORIDADE = { vermelho: 0, amarelo: 1, verde: 2 } as const;
+const PRIORIDADE_ORDEM = { critico: 0, atencao: 1, saudavel: 2 } as const;
 
 export function Alertas({ data, loading, error, onRetry, onSelect }: Props) {
   const alertas = useMemo(
     () =>
       [...data]
-        .filter((c) => c.status !== "verde")
-        .sort((a, b) => PRIORIDADE[a.status] - PRIORIDADE[b.status]),
+        .filter((c) => c.status !== "saudavel")
+        .sort((a, b) => PRIORIDADE_ORDEM[a.status] - PRIORIDADE_ORDEM[b.status]),
     [data]
   );
 
@@ -65,9 +65,9 @@ export function Alertas({ data, loading, error, onRetry, onSelect }: Props) {
             style={{
               textAlign: "left",
               padding: "14px 18px",
-              border: `1px solid ${c.status === "vermelho" ? "rgba(240,75,75,.25)" : "rgba(245,166,35,.2)"}`,
+              border: `1px solid ${c.status === "critico" ? "rgba(240,75,75,.25)" : "rgba(245,166,35,.2)"}`,
               borderRadius: 10,
-              background: c.status === "vermelho" ? "rgba(240,75,75,.04)" : "rgba(245,166,35,.04)",
+              background: c.status === "critico" ? "rgba(240,75,75,.04)" : "rgba(245,166,35,.04)",
               cursor: "pointer",
               display: "flex",
               justifyContent: "space-between",
@@ -80,12 +80,12 @@ export function Alertas({ data, loading, error, onRetry, onSelect }: Props) {
                 <p style={{ fontSize: 13, fontWeight: 600, color: "#e0e0e0" }}>{c.cliente}</p>
                 <StatusPill status={c.status} />
               </div>
-              <p style={{ fontSize: 11, color: "#666" }}>{c.funil} · {c.tipoFunil}</p>
+              <p style={{ fontSize: 11, color: "#666" }}>{c.funil} {c.tipoFunil ? `· ${c.tipoFunil}` : ""}</p>
             </div>
             <div style={{ textAlign: "right", flexShrink: 0 }}>
-              <p style={{ fontSize: 10, color: "#555570" }}>{c.nomeKpi}</p>
-              <p style={{ fontSize: 16, fontWeight: 700, color: c.status === "vermelho" ? "#f04b4b" : "#f5a623" }}>
-                R$ {(c.kpi ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              <p style={{ fontSize: 10, color: "#555570" }}>{c.kpis.principal.nome}</p>
+              <p style={{ fontSize: 16, fontWeight: 700, color: c.status === "critico" ? "#f04b4b" : "#f5a623" }}>
+                R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
               </p>
             </div>
           </button>

@@ -6,6 +6,19 @@ export async function performanceRoutes(app) {
     const { clientId } = request.params
     const { from, to } = request.query
 
+    // Validar que o client pertence à empresa do user
+    const { data: client, error: clientError } = await db
+      .from('clients')
+      .select('id')
+      .eq('id', clientId)
+      .eq('company_id', request.companyId)
+      .single()
+
+    if (clientError || !client) {
+      return reply.code(404).send({ error: 'Cliente não encontrado' })
+    }
+
+    // Buscar registros de performance
     let query = db
       .from('performance_records')
       .select('*')

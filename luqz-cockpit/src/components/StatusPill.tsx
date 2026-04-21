@@ -1,12 +1,12 @@
-import type { StatusCor } from "@/types/cockpit";
+import type { StatusInteligencia } from "@/types/cockpit";
 
-const MAP: Record<StatusCor, { label: string; color: string; bg: string }> = {
-  verde:    { label: "Verde",   color: "#00c37a", bg: "rgba(0,195,122,.12)" },
-  amarelo:  { label: "Atenção", color: "#f5a623", bg: "rgba(245,166,35,.12)" },
-  vermelho: { label: "Crítico", color: "#f04b4b", bg: "rgba(240,75,75,.12)" },
+const MAP: Record<StatusInteligencia, { label: string; color: string; bg: string }> = {
+  saudavel: { label: "Saudável", color: "#00c37a", bg: "rgba(0,195,122,.12)" },
+  atencao:  { label: "Atenção",  color: "#f5a623", bg: "rgba(245,166,35,.12)" },
+  critico:  { label: "Crítico",  color: "#f04b4b", bg: "rgba(240,75,75,.12)" },
 };
 
-export function StatusPill({ status }: { status: StatusCor }) {
+export function StatusPill({ status }: { status: StatusInteligencia }) {
   const { label, color, bg } = MAP[status];
   return (
     <span

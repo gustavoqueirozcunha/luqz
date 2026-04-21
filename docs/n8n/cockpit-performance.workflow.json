@@ -17,6 +17,17 @@
     },
     {
       "parameters": {
+        "language": "javaScript",
+        "jsCode": "// Verifica Authorization Header\nconst expectedSecret = $env['N8N_SECRET'];\n\nif (!expectedSecret) {\n  throw new Error('500 Internal Server Error: N8N_SECRET not configured in n8n environment');\n}\n\nconst req = $('Webhook').first().json;\nconst headers = req.headers || {};\nconst authHeader = headers.authorization;\nconst ip = headers['x-forwarded-for'] || 'unknown';\n\n// --- PREPARAÇÃO PARA RATE LIMITING ---\n// Exemplo futuro: \n// const staticData = $getWorkflowStaticData('global');\n// staticData[ip] = (staticData[ip] || 0) + 1;\n// if (staticData[ip] > LIMIT) throw new Error('429 Too Many Requests');\n// -------------------------------------\n\nif (!authHeader || authHeader !== `Bearer ${expectedSecret}`) {\n  // LOG GERAL (visível no painel do n8n / docker logs)\n  const partialHeader = authHeader ? authHeader.substring(0, 15) + '...' : 'none';\n  console.warn(JSON.stringify({\n    event: 'UNAUTHORIZED_ACCESS_ATTEMPT',\n    timestamp: new Date().toISOString(),\n    ip: ip,\n    providedHeader: partialHeader,\n    webhookId: 'cockpit-performance'\n  }));\n\n  // Interrompe a execução lançando um erro\n  throw new Error('401 Unauthorized: Invalid Authentication Token');\n}\n\nreturn $input.all();"
+      },
+      "id": "node-auth-check",
+      "name": "Function — Validar Auth",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [350, 300]
+    },
+    {
+      "parameters": {
         "documentId": {
           "__rl": true,
           "value": "SEU_SPREADSHEET_ID_AQUI",
@@ -98,6 +109,11 @@
   ],
   "connections": {
     "Webhook": {
+      "main": [
+        [{ "node": "Function — Validar Auth", "type": "main", "index": 0 }]
+      ]
+    },
+    "Function — Validar Auth": {
       "main": [
         [{ "node": "Google Sheets — Ler Dados", "type": "main", "index": 0 }]
       ]

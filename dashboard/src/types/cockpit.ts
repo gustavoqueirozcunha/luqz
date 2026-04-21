@@ -5,9 +5,9 @@ export type TipoFunil = "topo" | "captacao" | "consideracao" | "venda";
 export type NomeKpi   = "CPS" | "CPL" | "CAC";
 
 export interface ClientePerformance {
-  cliente:     string;
-  funil:       string;
-  leads:       number;
+  cliente:      string;
+  funil:        string;
+  resultados:   number;
   investimento: number;
   cpl:         number;
   status:      StatusCor;

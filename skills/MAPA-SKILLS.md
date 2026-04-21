@@ -27,6 +27,9 @@ Preciso construir backend ou SaaS?
   ├── Planejar MVP SaaS → saas-mvp-planner
   └── Conectar frontend à API → frontend-api-connector
 
+Preciso fazer deploy ou resolver build antigo em produção?
+  └── Easypanel / Docker Swarm / Traefik → easypanel-deploy-fix
+
 Preciso criar novo agente ou skill?
   ├── Novo agente → opensquad-agent-creator
   └── Nova skill → opensquad-skill-creator
@@ -76,6 +79,14 @@ Preciso criar novo agente ou skill?
 | `supabase-setup-debug` | `skills/supabase-setup-debug/SKILL.md` | Configurar Supabase (schema, auth, RLS) e depurar erros de integração | Prompt |
 | `saas-mvp-planner` | `skills/saas-mvp-planner/SKILL.md` | Evoluir sistema legado (planilhas/webhooks) para SaaS com auth e API | Prompt |
 | `frontend-api-connector` | `skills/frontend-api-connector/SKILL.md` | Conectar React/Vite a API REST com JWT — auth hook, route guard, cliente HTTP | Prompt |
+
+---
+
+### DEVOPS & INFRAESTRUTURA
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `easypanel-deploy-fix` | `skills/easypanel-deploy-fix/SKILL.md` | Deploy de frontend em Easypanel (Docker Swarm + Traefik + Nixpacks); site mostra build antigo | Prompt |
 
 ---
 

@@ -1,4 +1,4 @@
-import type { ClientePerformance } from "@/types/cockpit";
+import type { ClientePerformance, NomeKpi } from "@/types/cockpit";
 import { StatusPill } from "../components/StatusPill";
 
 interface Props {
@@ -23,6 +23,12 @@ function MetricBlock({ label, value, accent }: { label: string; value: string; a
     </div>
   );
 }
+
+const RESULTADO_LABEL: Record<NomeKpi, string> = {
+  CPL: "Leads gerados",
+  CPS: "Seguidores gerados",
+  CAC: "Vendas realizadas",
+};
 
 const TIPO_LABEL: Record<string, string> = {
   topo:         "Topo de Funil",
@@ -100,7 +106,7 @@ export function DetalheCliente({ cliente: c, onBack }: Props) {
       {/* Métricas */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 10 }}>
         <MetricBlock
-          label="Leads gerados"
+          label={RESULTADO_LABEL[c.nomeKpi] ?? "Resultados"}
           value={c.resultados.toLocaleString("pt-BR")}
         />
         <MetricBlock

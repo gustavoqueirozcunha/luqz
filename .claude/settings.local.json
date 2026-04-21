@@ -36,19 +36,14 @@
       "Bash(docker compose *)",
       "Bash(where docker *)",
       "Bash(xargs grep *)",
-      "Bash('/c/Program Files/Git/mingw64/bin/curl.exe' -sL -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNzc4NmQ4ZWUtYTA5YS00NDNmLWEzNjUtNGRmMTM3MWE5OWQ3IiwiaWF0IjoxNzc2NjI4MzUzfQ.gLHiJR_QgizzHXJQGBCCg5yZoOg3QYJoTVJNbWKfcDw' https://editor.luqz.com.br/api/v1/)",
-      "Bash('/c/Program Files/Git/mingw64/bin/curl.exe' -sL -X PUT -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjcwNGRiYy0wZWJhLTRlODMtYTEzOC03ZTk5ODE2NzI3MGUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNzc4NmQ4ZWUtYTA5YS00NDNmLWEzNjUtNGRmMTM3MWE5OWQ3IiwiaWF0IjoxNzc2NjI4MzUzfQ.gLHiJR_QgizzHXJQGBCCg5yZoOg3QYJoTVJNbWKfcDw' -H 'Content-Type: application/json' -d '{\"name\":\"My workflow\",\"nodes\":[{\"parameters\":{\"path\":\"369d400b-a937-4689-93d2-8f87073440d9\",\"options\":{}},\"type\":\"n8n-nodes-base.webhook\",\"typeVersion\":2.1,\"position\":[0,0],\"id\":\"5f291a2f-801c-4e00-b04f-b05d1530f45c\",\"name\":\"Webhook\",\"webhookId\":\"369d400b-a937-4689-93d2-8f87073440d9\"}],\"connections\":{},\"settings\":{\"executionOrder\":\"v1\"}}' https://editor.luqz.com.br/api/v1/workflows/dPhfYPGEguudIiYD -w '\\\\nHTTP:%{http_code}')",
-      "Bash(npm install *)",
-      "mcp__claude_ai_ClickUp__clickup_get_folder",
-      "mcp__claude_ai_ClickUp__clickup_get_list",
-      "mcp__claude_ai_ClickUp__clickup_create_list_in_folder",
-      "mcp__claude_ai_ClickUp__clickup_create_task",
+      "WebSearch",
+      "mcp__claude_ai_ClickUp__clickup_create_document_page",
       "mcp__claude_ai_ClickUp__clickup_get_chat_channels",
       "mcp__claude_ai_ClickUp__clickup_send_chat_message",
-      "Bash(git pull *)",
-      "Bash(git add *)",
-      "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "mcp__claude_ai_ClickUp__clickup_create_document",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(docker --version)"
     ]
   }
 }

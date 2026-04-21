@@ -100,7 +100,7 @@ export function Clientes({ data, loading, error, onRetry, onSelect }: Props) {
                       <span style={{ fontSize: 11, color: "#555570", marginRight: 4 }}>{c.nomeKpi}</span>
                       R$ {c.kpi.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
                     </td>
-                    <td style={TD}>{c.resultados.toLocaleString("pt-BR")}</td>
+                    <td style={TD}>{(c.resultados ?? 0).toLocaleString("pt-BR")}</td>
                     <td style={TD}>
                       R$ {c.investimento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
                     </td>

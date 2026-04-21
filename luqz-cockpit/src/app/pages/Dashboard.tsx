@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { ClientePerformance } from "@/types/cockpit";
+import type { ClientePerformance, NomeKpi } from "@/types/cockpit";
 import { StatusPill } from "@/components/StatusPill";
 import { SkeletonCard } from "@/components/Skeleton";
 import { EmptyState, ErrorState } from "@/components/EmptyState";
@@ -11,6 +11,12 @@ interface Props {
   onRetry:  () => void;
   onSelect: (c: ClientePerformance) => void;
 }
+
+const FUNIS: { kpi: NomeKpi; rotulo: string }[] = [
+  { kpi: "CPL", rotulo: "Leads"      },
+  { kpi: "CPS", rotulo: "Seguidores" },
+  { kpi: "CAC", rotulo: "Vendas"     },
+];
 
 function KpiCard({ label, value, accent }: { label: string; value: string | number; accent?: string }) {
   return (
@@ -33,13 +39,27 @@ function KpiCard({ label, value, accent }: { label: string; value: string | numb
 }
 
 export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
-  const stats = useMemo(() => ({
-    criticos:  data.filter((d) => d.status === "vermelho").length,
-    atencao:   data.filter((d) => d.status === "amarelo").length,
-    saudaveis: data.filter((d) => d.status === "verde").length,
-    totalLeads: data.reduce((s, d) => s + (d.resultados ?? 0), 0),
-    totalInv:   data.reduce((s, d) => s + d.investimento, 0),
-  }), [data]);
+  const stats = useMemo(() => {
+    const criticos  = data.filter((d) => d.status === "vermelho").length;
+    const atencao   = data.filter((d) => d.status === "amarelo").length;
+    const saudaveis = data.filter((d) => d.status === "verde").length;
+
+    const grupos: Record<NomeKpi, { resultados: number; investimento: number; count: number }> = {
+      CPL: { resultados: 0, investimento: 0, count: 0 },
+      CPS: { resultados: 0, investimento: 0, count: 0 },
+      CAC: { resultados: 0, investimento: 0, count: 0 },
+    };
+
+    for (const d of data) {
+      const kpi = d.nomeKpi;
+      if (!(kpi in grupos)) continue;
+      grupos[kpi].resultados   += d.resultados ?? 0;
+      grupos[kpi].investimento += d.investimento ?? 0;
+      grupos[kpi].count++;
+    }
+
+    return { criticos, atencao, saudaveis, grupos };
+  }, [data]);
 
   const ranking = useMemo(
     () =>
@@ -69,14 +89,43 @@ export function Dashboard({ data, loading, error, onRetry, onSelect }: Props) {
   return (
     <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 24 }}>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-        <KpiCard label="Clientes Críticos"   value={stats.criticos}  accent="#f04b4b" />
-        <KpiCard label="Em Atenção"           value={stats.atencao}   accent="#f5a623" />
-        <KpiCard label="Saudáveis"            value={stats.saudaveis} accent="#00c37a" />
-        <KpiCard label="Total de Leads"       value={stats.totalLeads.toLocaleString("pt-BR")} />
-        <KpiCard
-          label="Investimento Total"
-          value={`R$ ${stats.totalInv.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`}
-        />
+        <KpiCard label="Clientes Críticos" value={stats.criticos}  accent="#f04b4b" />
+        <KpiCard label="Em Atenção"        value={stats.atencao}   accent="#f5a623" />
+        <KpiCard label="Saudáveis"         value={stats.saudaveis} accent="#00c37a" />
+      </div>
+
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+        {FUNIS.map(({ kpi, rotulo }) => {
+          const g = stats.grupos[kpi];
+          if (g.count === 0) return null;
+          const custoMedio = g.resultados > 0 ? g.investimento / g.resultados : null;
+          return (
+            <div
+              key={kpi}
+              style={{
+                flex: 1,
+                minWidth: 200,
+                padding: "16px 20px",
+                border: "1px solid #2a2a3e",
+                borderRadius: 10,
+                background: "#16162a",
+              }}
+            >
+              <p style={{ fontSize: 11, color: "#666", marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                {rotulo} · {kpi}
+              </p>
+              <p style={{ fontSize: 22, fontWeight: 700, color: "#e0e0e0" }}>
+                {custoMedio !== null
+                  ? `R$ ${custoMedio.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`
+                  : "—"}
+              </p>
+              <p style={{ fontSize: 11, color: "#777", marginTop: 6 }}>
+                {g.resultados.toLocaleString("pt-BR")} {rotulo.toLowerCase()} ·{" "}
+                R$ {g.investimento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              </p>
+            </div>
+          );
+        })}
       </div>
 
       <div>

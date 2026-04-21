@@ -1,93 +1,102 @@
-# Memória do Cliente — [NOME_CLIENTE]
+# Memória do Cliente — Dr. Cássio Goulart
 
-> Este arquivo é atualizado pela IA após execuções significativas.  
-> É lido no boot sequence ANTES de qualquer produção.  
-> Não substituir contexto/. Complementar com aprendizados acumulados.
+> Atualizado após consolidação completa do M1 · 20/04/2026
+> Lido no boot sequence ANTES de qualquer produção.
 
 ---
 
 ## IDENTIDADE ESTRATÉGICA (resumo operacional)
 
-> Síntese do que importa para execução — não repetir cliente.md aqui, mas sintetizar o essencial.
-
-**Produto LUQZ ativo:** [AP360 / Posicionamento / etc]
-**Fase atual:** [Fase 1 Onboarding / Fase 2 Execução]
-**Semana atual:** [S1 / S5 / etc]
-**Trilha ativa:** [T1 / T2 / T3 / T4 / T5]
+**Produto LUQZ ativo:** Performance Orgânica — 6 meses / R$ 11.985,00  
+**Fase atual:** M1 — Onboarding + Linha Editorial  
+**Semana atual:** S4 (última semana do M1)  
+**Trilha ativa:** Produção orgânica (Reels + Carrosséis + Stories)  
+**Nicho:** Direito de Família — Pensão Alimentícia e Divórcio  
+**Canal de conversão:** WhatsApp (único CTA de toda a estratégia)  
+**Tráfego pago:** NÃO incluso — orgânico puro
 
 ---
 
 ## O QUE FUNCIONA PARA ESTE CLIENTE
 
 ### Copy e Mensagem
-- [Ex: "Linguagem técnica com autoridade funciona melhor que emocional"]
-- [Ex: "CTAs diretos superam CTAs sutis"]
+- Linguagem 100% livre de juridiquês — "Teoria da Aparência" vira "rastreia viagens e padrão de vida"
+- Hook de dor direto nos primeiros 3 segundos — sem saudação, sem introdução
+- CTAs exclusivamente para WhatsApp — nunca para comentários ou "salva aí"
+- Tom emocional acolhedor + autoridade prática — "eu sei exatamente pelo que você está passando"
+- Persona predominante: mulheres/mães com urgência em pensão ou divórcio
 
 ### Criativo e Design
-- [Ex: "Paleta escura converte melhor que clara para este público"]
-- [Ex: "Carrosseis com dados geram mais salvamento"]
+- Paleta escura: fundo #000000 ou #0B0F1A com tipografia Inter/Montserrat Black
+- Slide CTA com inversão obrigatória (fundo branco ou acento)
+- Formato Mitos: mentira em cinza light + resposta em branco ExtraBold + palavra FALSO em vermelho
+- Formato Dor/Provas: tag de acento + H1 gigante + corpo máx 2-3 frases
+- Proibido: balança da justiça, Têmis, martelo, fotos de banco com casais brigando
 
 ### Canais e Formato
-- [Ex: "Reels têm mais alcance que estáticos nesta conta"]
-- [Ex: "WhatsApp como canal de conversão — resposta rápida"]
+- Reels: 4-5/semana — principal motor de alcance
+- Carrosséis: 2/semana — foco em salvamento e compartilhamento
+- Stories: diários — construção de relacionamento + micro-triagem para WhatsApp
+- Gravação eye-level, mic lapela, fundo escritório limpo, jump cuts secos
 
 ---
 
 ## O QUE NÃO FUNCIONA (ANTIPADRÕES)
 
-- [Ex: "Proibido mencionar preço em posts orgânicos — cliente não quer"]
-- [Ex: "Tom informal rejeitado pelo cliente nas revisões — usar formal"]
-- [Ex: "Headline longa reduz CTR nos anúncios desta conta"]
+- Qualquer artigo de lei, parágrafo ou número de processo — expressamente proibido
+- Engajamento vazio (curtidas, "salva aí") — métrica irrelevante neste projeto
+- Sugestões de tráfego pago — escopo é orgânico puro
+- Tom técnico ou acadêmico — destruir juridiquês é regra inegociável
+- Conteúdo de fases futuras — não produzir entregáveis além do M1 sem validação
 
 ---
 
 ## APRENDIZADOS DE EXECUÇÃO
 
-### Revisões e Ajustes Recorrentes
-> O que o cliente sempre pede para mudar. Evitar antes de entregar.
-
-- [Data]: [O que foi pedido para ajustar]
-- [Data]: [Padrão de feedback observado]
-
 ### Contexto Tácito
-> O que não está em nenhum arquivo mas é real.
+- Cliente começa do zero: sem histórico de conteúdo, sem audiência, sem estrutura comercial
+- Todo lead é triado manualmente pelo Dr. Cássio no WhatsApp
+- Prazo de aprovação: 48h sem retorno = aprovado automaticamente
+- Edição de vídeo e publicação são responsabilidade do cliente (não da LUQZ)
 
-- [Ex: "Cliente prefere calls às terças-feiras"]
-- [Ex: "Decisor é X, mas aprovação passa por Y"]
-- [Ex: "Concorrente Z é referência odiada pelo cliente"]
-
----
-
-## HISTÓRICO DE HIPÓTESES TESTADAS
-
-| Data | Hipótese | Resultado | Status |
-|------|----------|-----------|--------|
-| [data] | [o que foi testado] | [o que aconteceu] | ✅ Validada / ❌ Descartada / 🔄 Em teste |
+### Decisões de Posicionamento
+- Nome Instagram definido: `Dr. Cássio Goulart | Direito de Família`
+- Bio estruturada para conversão com link direto para WhatsApp/Linktree
+- 4 Pilares de conteúdo: Dor Direta / Erros Comuns / Educação Simplificada / Posicionamento
 
 ---
 
-## DECISÕES ESTRATÉGICAS TOMADAS
+## CONTEÚDO PRODUZIDO — STATUS M1
 
-| Data | Decisão | Contexto | Quem decidiu |
-|------|---------|----------|--------------|
-| [data] | [decisão] | [por quê] | [usuário/cliente] |
+| Semana | Roteiros Reel | Carrosséis | Artes HTML | Status |
+|--------|--------------|------------|-----------|--------|
+| S1 | 4 ✅ | 2 ✅ | carrossel1 + carrossel2 ✅ | Entregue |
+| S2 | 4 ✅ | 2 ✅ | — | Entregue |
+| S3 | 4 ✅ | 2 ✅ | — | Entregue |
+| S4 | 4 ✅ | 2 ✅ | — | Entregue |
+
+**Total M1:** 16 roteiros de Reel + 8 carrosséis produzidos  
+**Artes em HTML:** 2 carrosséis renderizáveis (`M1/artes/`)
 
 ---
 
 ## ESTADO DO RELACIONAMENTO
 
-**Status da conta:** [Ativo / Em risco / Expansão / Churn]
-**Última interação:** [data]
-**Próxima milestone:** [o que vem por aí]
-**NPS estimado:** [Alta satisfação / Neutro / Insatisfeito]
+**Status da conta:** Ativo  
+**Última interação:** Abril/2026  
+**Próxima milestone:** Call de alinhamento M1 (S4) + início produção M2  
+**NPS estimado:** Sem dados ainda (M1 em curso)
 
 ---
 
 ## NOTAS LIVRES
 
-> Qualquer contexto relevante que não se encaixa nas categorias acima.
+- `CONTEXTO_COMPLETO_AGENTE.md` na raiz do cliente consolida todos os blocos 0-12 para boot rápido de agentes
+- Artes HTML executáveis em `M1/artes/` — carrossel1 (Provas), carrossel2 (Mitos)
+- Sistema visual detalhado em `design/sistema-visual.md` e `design/direcao-visual.md`
+- QA Gate específico do cliente em `contexto/qa-gate.md`
 
 ---
 
-> Última atualização: [data]  
-> Atualizado após: [o que motivou a atualização]
+> Última atualização: 20/04/2026  
+> Atualizado após: Consolidação completa do M1 — todas as semanas produzidas

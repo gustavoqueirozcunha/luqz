@@ -4,7 +4,7 @@ import { usePerformance } from "@/hooks/usePerformance";
 import type { ClientePerformance, AuthUser, AuthCompany } from "@/types/cockpit";
 import { TopBar } from "@/components/TopBar";
 import { Sidebar } from "@/components/Sidebar";
-import { Dashboard } from "@/app/pages/Dashboard";
+import Dashboard from "@/app/pages/Dashboard";
 import { Operacao } from "@/app/pages/Operacao";
 import { Alertas } from "@/app/pages/Alertas";
 import { Documentos } from "@/app/pages/Documentos";

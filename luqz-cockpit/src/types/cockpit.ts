@@ -18,8 +18,8 @@ export interface ClientePerformance {
   tipoFunil: TipoFunil | string;
   investimento: number;
   resultados: number;
-  kpis: {
-    principal: KpiDetail;
+  kpis?: {
+    principal?: KpiDetail;
   };
   status: StatusInteligencia;
   tendencia: {

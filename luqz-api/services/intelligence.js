@@ -96,7 +96,7 @@ function processIntelligence(item) {
   else if (status === 'atencao') statusText = 'Desvio exige acompanhamento.';
   else statusText = 'Desvio relevante frente ao planejado.';
 
-  const resumoExecutivo = `Obtivemos ${resultados.toLocaleString('pt-BR')} resultados com custo unitário de R$ ${fmtV(valorAtual)}. Meta: R$ ${fmtV(meta)}. ${statusText}`;
+  const resumoExecutivo = `Obtivemos ${(resultados ?? 0).toLocaleString('pt-BR')} resultados com custo unitário de R$ ${fmtV(valorAtual)}. Meta: R$ ${fmtV(meta)}. ${statusText}`;
 
   const ret = {
     cliente,

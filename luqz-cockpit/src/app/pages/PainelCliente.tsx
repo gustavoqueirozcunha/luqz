@@ -10,10 +10,10 @@ interface Props {
 export function PainelCliente({ cliente: c, onBack }: Props) {
   const statusColor = { saudavel: "#00c37a", atencao: "#f5a623", critico: "#f04b4b" }[c.status];
 
-  const kpiLabel = c.kpis.principal.nome === 'CPL' ? 'Leads' : 
-                   c.kpis.principal.nome === 'CAC' ? 'Vendas' :
-                   c.kpis.principal.nome === 'CPS' ? 'Seguidores' :
-                   c.kpis.principal.nome === 'CPV' ? 'Visualizações' : 'Resultados';
+  const kpiLabel = c.kpis?.principal?.nome === 'CPL' ? 'Leads' : 
+                   c.kpis?.principal?.nome === 'CAC' ? 'Vendas' :
+                   c.kpis?.principal?.nome === 'CPS' ? 'Seguidores' :
+                   c.kpis?.principal?.nome === 'CPV' ? 'Visualizações' : 'Resultados';
 
   return (
     <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 24, maxWidth: 800, margin: "0 auto" }}>
@@ -59,15 +59,15 @@ export function PainelCliente({ cliente: c, onBack }: Props) {
       {/* Métricas Principais */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
         <div style={{ padding: 20, background: "#16162a", borderRadius: 12, border: "1px solid #2a2a3e" }}>
-          <p style={{ fontSize: 11, color: "#555570", textTransform: "uppercase", marginBottom: 6 }}>{c.kpis.principal.nome} Atual</p>
+          <p style={{ fontSize: 11, color: "#555570", textTransform: "uppercase", marginBottom: 6 }}>{c.kpis?.principal?.nome} Atual</p>
           <p style={{ fontSize: 28, fontWeight: 800, color: "#fff" }}>
-            R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+            R$ {(c.kpis?.principal?.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
           </p>
         </div>
         <div style={{ padding: 20, background: "#16162a", borderRadius: 12, border: "1px solid #2a2a3e" }}>
           <p style={{ fontSize: 11, color: "#555570", textTransform: "uppercase", marginBottom: 6 }}>Meta do Plano</p>
           <p style={{ fontSize: 28, fontWeight: 800, color: "#888" }}>
-            R$ {(c.kpis.principal.meta ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+            R$ {(c.kpis?.principal?.meta ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
           </p>
         </div>
       </div>

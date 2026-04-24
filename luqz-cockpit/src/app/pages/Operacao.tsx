@@ -94,8 +94,8 @@ export function Operacao({ data, loading, error, onRetry, onSelect }: Props) {
                     <td style={TD}>{c.funil}</td>
                     <td style={{ ...TD, textTransform: "capitalize" }}>{c.tipoFunil || ""}</td>
                     <td style={TD}>
-                      <span style={{ fontSize: 11, color: "#555570", marginRight: 4 }}>{c.kpis.principal.nome}</span>
-                      R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                      <span style={{ fontSize: 11, color: "#555570", marginRight: 4 }}>{c.kpis?.principal?.nome}</span>
+                      R$ {(c.kpis?.principal?.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
                     </td>
                     <td style={TD}>{(c.resultados ?? 0).toLocaleString("pt-BR")}</td>
                     <td style={TD}>R$ {(c.investimento ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</td>

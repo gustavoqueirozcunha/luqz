@@ -1,4 +1,4 @@
-import { db } from '../services/supabase.js'
+import { db, authClient } from '../services/supabase.js'
 
 /**
  * Rotas de autenticação.
@@ -20,7 +20,7 @@ export async function authRoutes(app) {
     }
 
     // 1. Autenticar com Supabase
-    const { data: authData, error: authError } = await db.auth.signInWithPassword({
+    const { data: authData, error: authError } = await authClient.auth.signInWithPassword({
       email,
       password,
     })

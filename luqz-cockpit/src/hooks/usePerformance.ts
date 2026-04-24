@@ -29,7 +29,7 @@ export function usePerformance() {
       const payload = await getPerformanceData({ forceRefresh });
       setState({
         loadState:   "success",
-        data:        payload.data,
+        data:        payload.data.filter((d: any) => d?.kpis?.principal),
         totalGrupos: payload.totalGrupos,
         error:       null,
         lastUpdated: new Date(),

@@ -138,35 +138,26 @@ export async function internalRoutes(fastify) {
         throw new Error("Failed to fetch companies list: " + (cmpError?.message || "Unknown error"));
       }
 
-      let allPerformances = [];
-
-      // 3. Process each company to get live intel 
-      // (We read direct from intelligence layer as asked, it doesn't use DB persisted events)
-      for (const comp of companies) {
-        try {
-          const rawData = await n8nService.fetchPerformanceData(comp.id);
-          const normalized = normalizer.normalize(rawData);
-          const intelligentData = enhanceDataWithIntelligence(normalized);
-          
-          allPerformances.push(...intelligentData);
-        } catch (compErr) {
-          // ignore failed fetches to not break ranking
-        }
-      }
+      // 3. Buscar todos os dados do n8n e processar sem filtro por empresa
+      const n8nPayload = await fetchN8nData({ forceRefresh: true });
+      const { data: normalizedData } = normalizeAndFilter(n8nPayload.data, []);
+      const allPerformances = enhanceDataWithIntelligence(normalizedData);
 
       // 4. Filtrar Saudável e Atenção
       const healthyFunnels = allPerformances.filter(d => d.status === 'saudavel' || d.status === 'atencao');
 
       // 5. Ordenar por Variação Percentual Crescente (Menor = Melhor/Mais Econômico em relação a meta)
-      healthyFunnels.sort((a, b) => a.kpis.principal.variacaoPercentual - b.kpis.principal.variacaoPercentual);
+      healthyFunnels
+        .filter(d => d.kpis?.principal)
+        .sort((a, b) => a.kpis.principal.variacaoPercentual - b.kpis.principal.variacaoPercentual);
 
       // 6. Formatar Saída (Top 10)
       const formattedRanking = healthyFunnels.slice(0, 10).map((item, index) => ({
         posicao: index + 1,
         cliente: item.cliente,
         funil: item.funil,
-        kpi: item.kpis.principal.nome,
-        variacaoPercentual: item.kpis.principal.variacaoPercentual,
+        kpi: item.kpis?.principal?.nome,
+        variacaoPercentual: item.kpis?.principal?.variacaoPercentual,
         status: item.status
       }));
 

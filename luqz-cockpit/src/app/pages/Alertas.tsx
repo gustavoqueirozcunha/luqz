@@ -83,9 +83,9 @@ export function Alertas({ data, loading, error, onRetry, onSelect }: Props) {
               <p style={{ fontSize: 11, color: "#666" }}>{c.funil} {c.tipoFunil ? `· ${c.tipoFunil}` : ""}</p>
             </div>
             <div style={{ textAlign: "right", flexShrink: 0 }}>
-              <p style={{ fontSize: 10, color: "#555570" }}>{c.kpis.principal.nome}</p>
+              <p style={{ fontSize: 10, color: "#555570" }}>{c.kpis?.principal?.nome}</p>
               <p style={{ fontSize: 16, fontWeight: 700, color: c.status === "critico" ? "#f04b4b" : "#f5a623" }}>
-                R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                R$ {(c.kpis?.principal?.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
               </p>
             </div>
           </button>

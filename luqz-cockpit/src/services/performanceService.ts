@@ -1,4 +1,5 @@
 import type { CockpitAuth, PerformanceResponse } from "@/types/cockpit";
+import { api } from "@/services/api";
 
 // ── KPI variance calculation ─────────────────────────────────────────────
 
@@ -41,7 +42,6 @@ export function calculateKPIStatus(kpi: KPI): KPIStatusResult {
   return { variance, status, label };
 }
 
-const API_URL  = "https://editor.luqz.com.br/webhook/cockpit/performance";
 const CACHE_TTL = 120_000;
 
 interface CacheEntry {
@@ -63,23 +63,10 @@ export async function getPerformanceData(
 
   if (_inflight) return _inflight;
 
-  const params = new URLSearchParams();
-  if (opts.auth?.cliente) params.set("cliente", opts.auth.cliente);
-  if (opts.auth?.token)   params.set("token",   opts.auth.token);
-
-  const url = params.toString() ? `${API_URL}?${params}` : API_URL;
-
-  const headers: HeadersInit = { Accept: "application/json" };
-
-  _inflight = fetch(url, {
-    method:  "GET",
-    headers,
-    signal:  AbortSignal.timeout(10_000),
-  })
-    .then(async (res) => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const payload = (await res.json()) as PerformanceResponse;
-      if (payload.status !== "ok") throw new Error("Backend retornou status !== ok");
+  _inflight = api<PerformanceResponse>(
+    `/client/dashboard${opts.forceRefresh ? "?refresh=true" : ""}`,
+  )
+    .then((payload: PerformanceResponse) => {
       _cache = { data: payload, fetchedAt: Date.now() };
       return payload;
     })

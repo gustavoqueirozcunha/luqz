@@ -6,8 +6,10 @@ const MAP: Record<StatusInteligencia, { label: string; color: string; bg: string
   critico:  { label: "Crítico",  color: "#f04b4b", bg: "rgba(240,75,75,.12)" },
 };
 
-export function StatusPill({ status }: { status: StatusInteligencia }) {
-  const { label, color, bg } = MAP[status];
+const FALLBACK = { label: "—", color: "#888", bg: "rgba(136,136,136,.12)" };
+
+export function StatusPill({ status }: { status: string }) {
+  const { label, color, bg } = MAP[status as StatusInteligencia] ?? FALLBACK;
   return (
     <span
       style={{

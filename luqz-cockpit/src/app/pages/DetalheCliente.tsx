@@ -29,10 +29,10 @@ function MetricBlock({ label, value, accent }: { label: string; value: string; a
 export function DetalheCliente({ cliente: c, onBack }: Props) {
   const statusColor = { saudavel: "#00c37a", atencao: "#f5a623", critico: "#f04b4b" }[c.status];
 
-  const kpiLabel = c.kpis.principal.nome === 'CPL' ? 'Leads' : 
-                   c.kpis.principal.nome === 'CAC' ? 'Vendas' :
-                   c.kpis.principal.nome === 'CPS' ? 'Seguidores' :
-                   c.kpis.principal.nome === 'CPV' ? 'Visualizações' : 'Resultados';
+  const kpiLabel = c.kpis?.principal?.nome === 'CPL' ? 'Leads' : 
+                   c.kpis?.principal?.nome === 'CAC' ? 'Vendas' :
+                   c.kpis?.principal?.nome === 'CPS' ? 'Seguidores' :
+                   c.kpis?.principal?.nome === 'CPV' ? 'Visualizações' : 'Resultados';
 
   return (
     <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 24 }}>
@@ -75,10 +75,10 @@ export function DetalheCliente({ cliente: c, onBack }: Props) {
       >
         <div>
           <p style={{ fontSize: 11, color: "#555570", textTransform: "uppercase", letterSpacing: 0.5 }}>
-            {c.kpis.principal.nome} atual
+            {c.kpis?.principal?.nome} atual
           </p>
           <p style={{ fontSize: 32, fontWeight: 800, color: statusColor }}>
-            R$ {(c.kpis.principal.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+            R$ {(c.kpis?.principal?.valorAtual ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
           </p>
         </div>
         <div style={{ width: 1, height: 40, background: "#2a2a3e" }} />
@@ -93,7 +93,7 @@ export function DetalheCliente({ cliente: c, onBack }: Props) {
         <MetricBlock label={`Prioridade (${c.prioridade})`} value={c.prioridade === 'baixa' ? 'Normal' : 'Atenção Requerida'} accent={c.prioridade === 'alta' ? '#f04b4b' : c.prioridade === 'media' ? '#f5a623' : '#e0e0e0'} />
         <MetricBlock label={kpiLabel}     value={(c.resultados ?? 0).toLocaleString("pt-BR")} />
         <MetricBlock label="Investimento"   value={`R$ ${(c.investimento ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`} />
-        <MetricBlock label={c.kpis.principal.nome + " (Meta)"} value={`R$ ${(c.kpis.principal.meta ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`} accent={statusColor} />
+        <MetricBlock label={(c.kpis?.principal?.nome ?? "KPI") + " (Meta)"} value={`R$ ${(c.kpis?.principal?.meta ?? 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`} accent={statusColor} />
       </div>
 
       <div style={{ padding: "14px 18px", border: "1px solid #2a2a3e", borderRadius: 10, background: "#16162a" }}>
@@ -113,7 +113,7 @@ export function DetalheCliente({ cliente: c, onBack }: Props) {
           </div>
           <div>
             <p style={{ fontSize: 10, color: "#444" }}>Métrica principal</p>
-            <p style={{ fontSize: 13, color: "#ccc", marginTop: 2 }}>{c.kpis.principal.nome}</p>
+            <p style={{ fontSize: 13, color: "#ccc", marginTop: 2 }}>{c.kpis?.principal?.nome}</p>
           </div>
         </div>
       </div>

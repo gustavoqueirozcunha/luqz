@@ -3,6 +3,8 @@
 **Fase:** Phase 1 — Onboarding | S2→S4 | Abril–Maio 2026
 **Status:** Aguardando aprovação do manual de marca (Gerlane) — produção em stock até aprovação
 
+> ⚠️ **NOTA DE PIVÔ — 27/04/2026:** Direção visual alterada. A paleta anterior (verde/neutros/clean) foi substituída pela nova direção quente/apetitosa com Vermelho LEVITÁ `#D72B2B` como cor principal. **Todos os assets do backlog abaixo devem ser produzidos com o sistema visual atualizado.** Consultar `design/sistema-visual.md` antes de executar qualquer peça. Assets eventualmente produzidos com a paleta anterior devem ser descartados ou refeitos.
+
 ---
 
 ## CONTEXTO OPERACIONAL

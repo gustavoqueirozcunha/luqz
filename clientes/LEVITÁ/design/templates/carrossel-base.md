@@ -25,4 +25,11 @@ Todo carrossel LUQZ opera em formato expansivo (swiping horizontal) focado estri
 - O CTA na última lâmina é grande, em formato de botão geométrico, guiando o olho para onde clicar (Simulação de UI).
 
 ## Específico LEVITÁ
-- [Preencher — variações de layout, cores ou estilos específicos da marca]
+- **Cor de capa (fundo):** Vermelho LEVITÁ `#D72B2B` — padrão. Terracota `#C04B2D` como variação institucional.
+- **Cor de H1 (título da capa):** Off-White Leite `#F9F4EE`
+- **Cor de acento/paginação:** Amarelo Açafrão `#F0A500`
+- **Cor de CTA (última lâmina):** Fundo Vermelho LEVITÁ + texto Off-White Leite + borda arredondada
+- **Lâminas internas:** Fundo Off-White Leite `#F9F4EE` ou Bege Manteiga `#EDE0CC` + texto Preto Fumaça `#1A1108`
+- **Detalhe de cor nas lâminas internas:** Bloco lateral ou linha superior em Laranja Braseiro `#E8622A` para manter calor
+- **Gradient Overlay em fotos:** Terracota/Vermelho de 0 a 70%, nunca overlay frio
+- **Logo:** canto superior esquerdo da capa em Off-White Leite | última lâmina centralizado em Vermelho LEVITÁ sobre fundo claro

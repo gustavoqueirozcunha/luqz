@@ -29,6 +29,7 @@ Caixa rápido via WhatsApp + cardápio web antes de escalar digital.
 |------|---------|----------|
 | | Caixa rápido via Dona Gê antes de montar o digital | Base existente de clientes minimiza risco e acelera primeiras vendas |
 | | Manual de marca como próximo passo imediato | Sem identidade visual definida não há consistência possível |
+| 27/04/2026 | Pivô de branding: paleta verde/clean → vermelho/quente/apetitoso | Identidade anterior percebida como fria, elitista e sem apelo de sabor. Nova direção: Vermelho LEVITÁ `#D72B2B` como cor dominante, tons quentes de apoio, fotografia com iluminação dourada e close extremo. Objetivo: a comida parecer gostosa antes de qualquer texto. |
 
 ## Próximo movimento
 

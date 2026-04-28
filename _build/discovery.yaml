@@ -1,0 +1,49 @@
+squad_code: "rijeero-b2b-aquisicao"
+purpose: "Estruturar e operar o sistema de aquisição direta de lojistas e marcas para a RIJEERO, migrando a dependência de marketplace para canais próprios B2B (prospecção ativa, conteúdo de autoridade e funil comercial)."
+domain: "mixed"
+
+company:
+  name: "LUQZ"
+  tone: "Profissional, direto, orientado a resultado e receita"
+  products: "Arquitetura de Performance 360 (AP360)"
+
+language: "Português"
+
+context:
+  audience: "Lojistas de moda (multimarcas, boutiques, lojas de shopping) e marcas emergentes que buscam private label em couro legítimo"
+  platforms: "Instagram B2B, WhatsApp (prospecção direta), e-mail"
+  tone: "Autoridade artesanal premium — profissional, concreto, respeitoso"
+  sources: "Briefing de marca RIJEERO, contexto de cliente AP360, histórico de marketplace"
+  output_format: "Materiais de prospecção B2B, conteúdo de autoridade, scripts de abordagem, funil comercial"
+  frequency: "Operação contínua — produção semanal de conteúdo + prospecção ativa"
+  trigger: "Sessão semanal de produção + eventos de prospecção (feiras, contatos diretos)"
+  systems: "Instagram, WhatsApp Business, ClickUp (gestão de leads), CRM a definir"
+  decisions: "Quais canais de prospecção geram lojistas qualificados com menor CAC; qual formato de conteúdo gera mais inbound B2B"
+
+tools_needed:
+  - "web_search"
+  - "web_fetch"
+  - "canva"
+  - "image-ai-generator"
+  - "clickup"
+
+investigation:
+  enabled: false
+  profiles: []
+
+target_formats:
+  - "instagram-feed"
+  - "instagram-reels"
+  - "instagram-stories"
+  - "whatsapp-broadcast"
+
+client:
+  name: "RIJEERO"
+  product: "AP360"
+  phase: "Fase 1 — Onboarding (S1-S4)"
+  start_date: "2026-04-27"
+  goals:
+    revenue_target: "R$ 100.000/mês"
+    new_retailers_per_month: 20
+    avg_ticket_per_piece: "R$ 200"
+    strategic_priority: "Migração de marketplace para aquisição direta B2B"

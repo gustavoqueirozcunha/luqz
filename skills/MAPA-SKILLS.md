@@ -30,6 +30,12 @@ Preciso construir backend ou SaaS?
 Preciso fazer deploy ou resolver build antigo em produção?
   └── Easypanel / Docker Swarm / Traefik → easypanel-deploy-fix
 
+Preciso suportar, diagnosticar ou replicar o sistema BDR de prospecção no n8n?
+  └── Apify + Jina + GPT + Evolution API + Google Sheets → n8n-bdr-prospeccao
+
+Preciso corrigir fórmula, calcular métrica ou montar dashboard em Google Sheets?
+  └── CPL / ROAS / pacing / funil / #DIV/0 / #REF → google-sheets-performance-specialist
+
 Preciso criar novo agente ou skill?
   ├── Novo agente → opensquad-agent-creator
   └── Nova skill → opensquad-skill-creator
@@ -82,6 +88,14 @@ Preciso criar novo agente ou skill?
 
 ---
 
+### AUTOMAÇÃO & N8N
+
+| Skill | Arquivo | Quando usar | Tipo |
+|-------|---------|-------------|------|
+| `n8n-bdr-prospeccao` | `skills/n8n-bdr-prospeccao/SKILL.md` | Suporte, diagnóstico e replicação do sistema BDR B2B (Apify + Jina AI + GPT-4o-mini + Evolution API + Google Sheets) | Prompt |
+
+---
+
 ### DEVOPS & INFRAESTRUTURA
 
 | Skill | Arquivo | Quando usar | Tipo |
@@ -96,6 +110,7 @@ Preciso criar novo agente ou skill?
 |-------|---------|-------------|------|
 | `apify` | `skills/apify/SKILL.md` | Scraping de dados de concorrentes, referências, benchmarks | Scraping |
 | `blotato` | `skills/blotato/SKILL.md` | [verificar uso específico no SKILL.md] | Utility |
+| `google-sheets-performance-specialist` | `skills/google-sheets-performance-specialist/SKILL.md` | Corrigir fórmulas (#REF, #DIV/0, #VALUE), calcular CPL/ROAS/pacing, montar funil e dashboards em Google Sheets | Prompt |
 
 ---
 

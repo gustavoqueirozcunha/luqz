@@ -25,4 +25,10 @@
 - Não usar mais de 2 cores além do fundo na capa.
 
 ## Específico LEVITÁ
-- [Preencher — posicionamento do logo, cor do texto, estilo de tipografia]
+- **Posicionamento do logo:** canto superior esquerdo, tamanho mínimo 120px, em Off-White Leite `#F9F4EE`
+- **Cor do H1 (gancho principal):** Off-White Leite `#F9F4EE` — sempre sobre o fundo escurecido do vídeo
+- **Cor do H2 (complemento opcional):** Amarelo Açafrão `#F0A500` para destacar palavra-chave
+- **Overlay do fundo:** Gradient preto de 60–80% de opacidade — preservar tons quentes do vídeo abaixo
+- **Estilo tipográfico:** Cormorant Garamond Bold para H1 (máximo 6 palavras, dominando 60% da área útil)
+- **Detalhe opcional:** pequena linha ou badge em Vermelho LEVITÁ `#D72B2B` acima do H1 (ex: "NOVO" ou nome do prato)
+- **Regra de tom:** o frame do vídeo escolhido como fundo DEVE ter tons quentes visíveis — nunca usar frame frio/azulado

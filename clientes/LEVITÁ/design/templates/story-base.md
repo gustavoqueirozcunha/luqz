@@ -34,4 +34,9 @@
 - Usar logo apenas quando necessário para reforço de autoridade.
 
 ## Específico LEVITÁ
-- [Preencher — diretriz de stories específica da marca]
+- **Story Informativo:** Fundo Bege Manteiga `#EDE0CC` + texto Preto Fumaça `#1A1108` + detalhe de cor em Laranja Braseiro `#E8622A`
+- **Story de CTA/Conversão:** Fundo Vermelho LEVITÁ `#D72B2B` + texto Off-White Leite `#F9F4EE` + CTA em Amarelo Açafrão `#F0A500`
+- **Story de Poll/Engajamento:** Fundo Off-White Leite `#F9F4EE` + widget nativo do Instagram centralizado + logo discreto no topo
+- **Story de produto (foto):** foto em close com overlay Terracota de 0–50% na base + nome do prato e proteína em Off-White Leite
+- **Gradiente de fundo (quando aplicável):** Vermelho LEVITÁ → Terracota (de cima para baixo), suave
+- **Logo:** canto superior central ou superior esquerdo, tamanho mínimo 120px, sempre em Off-White Leite sobre fundo escuro

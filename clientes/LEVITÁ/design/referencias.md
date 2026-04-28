@@ -2,11 +2,18 @@
 
 Este arquivo atua como o moodboard intelectual do designer. Antes de iniciar a execução de uma peça, consulte estes guias para calibrar o "olho" para o padrão LUQZ.
 
-## 1. Nível Global de Design Premium
-Estes players definem o estado da arte de comunicação visual limpa, focada em conversão e usabilidade. Todo Carrossel ou Reel LUQZ deve se parecer como se tivesse saído destas landing pages.
-- [Stripe](https://stripe.com/br) (Tons suaves, tipografia de extremo contraste, uso de afiliação e linhas limpas).
-- [Linear](https://linear.app) (Modo noturno perfeito, contraste agressivo, simplicidade extrema focada no tech/premium).
-- [Apple](https://www.apple.com) (Espaço negativo como protagonista, produtos/elementos gigantes).
+## 1. Referências de Energia Visual e Cor (Nova Direção — Pivô 27/04/2026)
+Estas referências calibram a energia, apetite e uso do vermelho como elemento de sabor — não de fast food.
+- **Tabasco Reserva** — vermelho premium com sofisticação; embalagem que comunica sabor intenso sem vulgaridade
+- **Heinz 1869** — vermelho como identidade dominante de marca alimentícia com percepção premium
+- **Vero Gusto (Barilla)** — comida italiana premium com fotografia apetitosa, vermelho e terracota como linguagem visual
+- **Don Pepperoncino** — marca de molho artesanal com identidade quente, tipografia expressiva, não industrial
+
+## 2. Referências de Estrutura Tipográfica e Grid
+Aplicar apenas na estrutura e hierarquia — não na paleta de cores.
+- [Stripe](https://stripe.com/br) — tipografia de extremo contraste, elegância sem frieza
+- [Apple](https://www.apple.com) — espaço negativo como protagonista, produto em destaque
+- [Linear](https://linear.app) — contraste agressivo, simplicidade extrema
 
 ## 2. Perfis de Instagram de Excelência no Nicho
 

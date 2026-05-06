@@ -72,6 +72,7 @@ Preciso criar novo agente ou skill?
 | `kommo-crm-setup` | `skills/kommo-crm-setup/SKILL.md` | Setup inicial, configuração de funis, automações no Kommo | Integration |
 | `clickup-torre-uploader` | `skills/clickup-torre-uploader/SKILL.md` | Upload de documentos formatados no ClickUp | Integration |
 | `resend` | `skills/resend/SKILL.md` | Disparo de emails (relatórios, notificações, comunicados) | Email |
+| `meta-ads` | `skills/meta-ads/SKILL.md` | Leitura e controle do gerenciador de anúncios Meta (CPA, ROAS, campanhas) | MCP |
 
 **Regra crítica:** Publicação no ClickUp SEMPRE passa pelo `luqz-documentacao` antes de usar `clickup-torre-uploader`. Nunca acionar diretamente.
 

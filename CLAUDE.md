@@ -136,6 +136,7 @@ Checklist detalhado: `clientes/[cliente]/contexto/qa-gate.md`
 | luqz-gestor-projetos | Gestão estratégica, PMO, alinhamento de escopo e ClickUp | Consultivo |
 | luqz-n8n | Automacoes e fluxos N8N | Funcional |
 | luqz-documentacao | Formatacao e publicacao de documentos no ClickUp | Utilitario |
+| luqz-trafego | Gestão de tráfego pago, leitura e manipulação de campanhas Meta Ads via MCP | Funcional |
 
 ### Regras de agentes
 

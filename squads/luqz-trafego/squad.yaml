@@ -1,0 +1,20 @@
+squad:
+  code: luqz-trafego
+  name: Squad Tráfego
+  description: Gestão de tráfego pago dos clientes LUQZ, responsável pela criação, monitoramento e otimização de campanhas no Meta Ads seguindo o plano de mídia estipulado.
+  icon: 📊
+  language: Português (Brasil)
+  type: functional
+
+pipeline_participation:
+  - luqz-aquisicao-conversao
+
+agents:
+  - id: bento-trafego
+    name: Bento Tráfego
+    icon: 🎯
+    title: Gestor de Tráfego Sênior
+
+skills:
+  - meta-ads
+  - google-sheets-performance-specialist

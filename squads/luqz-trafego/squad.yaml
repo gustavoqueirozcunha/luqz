@@ -1,7 +1,7 @@
 squad:
   code: luqz-trafego
   name: Squad Tráfego
-  description: Gestão de tráfego pago dos clientes LUQZ, responsável pela criação, monitoramento e otimização de campanhas no Meta Ads seguindo o plano de mídia estipulado.
+  description: Gestão de tráfego pago dos clientes LUQZ, responsável por cruzar o plano de mídia com a execução no Meta Ads por mês, funil e tag de campanha, para orientar otimizações e consolidados.
   icon: 📊
   language: Português (Brasil)
   type: functional
@@ -18,3 +18,9 @@ agents:
 skills:
   - meta-ads
   - google-sheets-performance-specialist
+
+data:
+  - pipeline/data/naming-conventions.md
+  - pipeline/data/funis-planilha-reais.md
+  - pipeline/data/task-otimizacao-template.md
+  - pipeline/data/clickup-otimizacao-recorrente.md

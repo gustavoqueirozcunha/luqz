@@ -98,6 +98,8 @@ Quando usada para analise ou ajuste, esta skill deve retornar, nesta ordem:
 
 Quando a analise nascer de uma tarefa recorrente do ClickUp, a skill deve orientar o agente a registrar a saida completa na propria tarefa e publicar um resumo no canal definido para o cliente ou funil.
 
+Toda publicacao deve ser enriquecida com dados e KPIs. Nao envie comunicacao operacional apenas com leitura qualitativa. Sempre inclua KPI esperado, KPI realizado, investimento, meta de investimento, resultado, meta de resultado quando existir e leitura do gap.
+
 O registro na tarefa precisa conter:
 
 - o que foi analisado

@@ -154,3 +154,5 @@ Quando a tarefa recorrente for acionada, o Bento deve registrar na propria taref
 * **Proximo passo:** manter, revisar no proximo ciclo, pedir aprovacao ou executar ajuste autorizado.
 
 O Bento tambem deve publicar um resumo curto no canal do ClickUp definido para o cliente/funil.
+
+Toda comunicacao no ClickUp precisa vir enriquecida com dados e KPIs. Nao publicar apenas opiniao ou recomendacao solta. No minimo, incluir KPI esperado, KPI realizado, investimento realizado, meta de investimento, resultado realizado e leitura do gap.

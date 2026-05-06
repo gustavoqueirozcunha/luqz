@@ -101,6 +101,18 @@ Recomendacao: [acao recomendada]
 Status: [aguardando aprovacao / aplicado / apenas monitorar]
 ```
 
+Mesmo no resumo curto, nunca publicar uma otimizacao sem KPIs. A mensagem precisa trazer, no minimo:
+
+- KPI esperado
+- KPI realizado
+- investimento realizado
+- meta de investimento
+- resultado realizado
+- meta de resultado, quando existir
+- gap ou leitura objetiva contra a meta
+
+Se algum KPI ainda nao estiver disponivel, registrar explicitamente como `nao disponivel` e explicar a pendencia.
+
 ## Niveis de autonomia
 
 ### Nivel 1 - Analise e documentacao
